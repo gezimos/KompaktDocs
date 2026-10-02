@@ -1,0 +1,101 @@
+---
+sidebar_position: 7
+title: Last resort
+---
+
+# Last resort
+
+You will most likely never need this page. Following the install guide is
+straightforward and keeps you well clear of it.
+
+It is here just in case: if something done outside the guide leaves the phone
+unable to start, this gets it back, using [mtkclient](/prepare/mtkclient).
+
+**Try the normal ways first:**
+
+- Hold **Volume-Down** while plugging in USB to reach the bootloader.
+- Or hold **Power and Volume-Up** for the boot mode menu.
+- If either works, follow [Install](/install/install-kompaktos) or
+  [Going back](/install/going-back) from there instead.
+
+## What you need
+
+- **mtkclient**, set up as in [mtkclient](/prepare/mtkclient).
+- **A boot image**, one of:
+  - `boot_a.bin` from your own mtkclient backup, the best choice;
+  - Mudita's `boot.img` for the MuditaOS version you are going back to (see
+    [Mudita's images](#muditas-images) below).
+- **Charge first.** The phone does not charge while it is in BROM.
+
+## 1. Put a working boot image back
+
+A boot image that does not start is the usual cause, and on the Kompakt the boot
+image also carries recovery and fastbootd, so one bad `boot` takes all three
+with it. Putting a good one back brings them back.
+
+Start the command, then connect the phone as in
+[Back up](/prepare/mtkclient#back-up): switched off and unplugged, hold
+**Volume-Up and Volume-Down**, plug in USB.
+
+Write it to both slots, so it does not matter which one the phone is on:
+
+```
+python mtk.py w boot_a /path/to/boot.img
+python mtk.py w boot_b /path/to/boot.img
+python mtk.py reset
+```
+
+Run `mtk.py` the way your [mtkclient install](/prepare/mtkclient#install)
+does: on macOS that is often `sudo venv/bin/python mtk.py`.
+
+## 2. Then choose where to go
+
+The phone now has a working recovery again. From there:
+
+- **Back to MuditaOS:** follow [Going back](/install/going-back). Mudita's
+  update package rewrites everything else.
+- **Back to KompaktOS:** follow [Install](/install/install-kompaktos).
+
+If the phone still does not start, and recovery does not open either, put back
+the rest of the small partitions from your own backup, one slot at a time,
+the same way:
+
+```
+python mtk.py w dtbo_a backup/dtbo_a.bin
+python mtk.py w vbmeta_a backup/vbmeta_a.bin
+python mtk.py w vbmeta_system_a backup/vbmeta_system_a.bin
+python mtk.py w vbmeta_vendor_a backup/vbmeta_vendor_a.bin
+```
+
+and the same with `_b`. Then try recovery again, and go on as above.
+
+## Mudita's images
+
+No backup? Mudita's images come from Mudita's update package for your version,
+the file named like `Kompakt-1.6.1.signed.user-ota.zip`. The images are packed
+inside it, in `payload.bin`. [payload-dumper-go](https://github.com/ssut/payload-dumper-go)
+unpacks them:
+
+```
+unzip Kompakt-1.6.1.signed.user-ota.zip payload.bin
+payload-dumper-go payload.bin
+```
+
+That gives `boot.img`, `dtbo.img`, `vbmeta.img` and the rest in a new folder.
+
+**Use the package for your phone's region.** Phones sold in North America have
+their own MuditaOS builds, with a different modem image (`md1img`). If you ever
+write the modem, write the one from your own backup, never one from another
+region.
+
+## Never write these
+
+- **`seccfg`**: the bootloader lock state. A wrong one can brick the phone for
+  good.
+- **`preloader`**: the first code the phone runs. A bad one leaves only BROM.
+- **`para`** from anyone else's phone, and never erase it. It holds the A/B slot
+  state.
+- **`nvram`, `nvdata`, `nvcfg`, `protect1`, `protect2`, `proinfo`, `persist`**
+  from anyone else's phone. They hold your IMEI, serial number and radio
+  calibration, and another phone's copy is wrong for yours. Put back your own
+  only if the IMEI is gone.

@@ -1,0 +1,110 @@
+---
+title: Unlocking the bootloader
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Unlocking the bootloader
+
+KompaktOS needs an unlocked bootloader. A backup with
+[mtkclient](/prepare/mtkclient) first is optional, but recommended.
+
+## 1. Install ADB
+
+`adb` and `fastboot` let your computer talk to the phone over USB. Both come in
+Google's platform-tools.
+
+<Tabs groupId="os">
+<TabItem value="mac" label="macOS">
+
+With [Homebrew](https://brew.sh), in Terminal:
+
+```
+brew install --cask android-platform-tools
+```
+
+</TabItem>
+<TabItem value="win" label="Windows">
+
+1. Download **SDK Platform-Tools for Windows** from
+   [Google's platform-tools page](https://developer.android.com/tools/releases/platform-tools).
+2. Extract it and open the `platform-tools` folder.
+3. Click the folder's address bar, type `cmd` and press Enter.
+
+Run the commands in that window.
+
+</TabItem>
+<TabItem value="linux" label="Linux">
+
+```
+sudo apt install adb fastboot
+```
+
+On other distributions, install the `android-tools` package.
+
+</TabItem>
+</Tabs>
+
+## 2. Turn on USB debugging and OEM unlocking
+
+On the phone:
+
+1. Settings → About phone → tap **Build number** seven times. If the phone has a
+   PIN, it asks for it.
+2. Settings → System → Developer options → turn on **USB debugging**.
+3. In the same list, turn on **OEM unlocking**.
+
+**OEM unlocking missing?**
+
+- Connect to the internet: it may only appear after that.
+- Still missing: in Developer options, change **Smallest width** from 360 to
+  420. The layout hides the option at 360.
+
+## 3. Connect
+
+Plug in the phone and run:
+
+```
+adb devices
+```
+
+1. The phone asks **Allow USB debugging?**
+2. Tick *Always allow from this computer* and tap **Allow**.
+3. Run `adb devices` again: it should now say `device`.
+
+Nothing listed? Try another cable: some cables only charge.
+
+## 4. Unlock
+
+```
+adb reboot bootloader
+fastboot flashing unlock
+```
+
+- **The screen shows nothing:** the confirmation is there, but the e-ink panel
+  does not draw it.
+- Press **Volume-Up** to confirm.
+- The computer prints `Start unlock flow`.
+- It takes about 12 seconds.
+
+## 5. Check
+
+```
+fastboot getvar unlocked
+```
+
+- It should answer `unlocked: yes`.
+- The phone stays in the bootloader: go straight to
+  [Install, step 1](/install/install-kompaktos#1-put-the-recovery-on-the-phone)
+  and use the **Already in the bootloader** tab.
+
+**Relocking is only possible with MuditaOS-K installed, do not try to relock
+LineageOS.**
+
+## If fastboot sees nothing
+
+- **Try another cable.** A cable can work for adb and still fail in fastboot.
+  If `fastboot devices` lists nothing, suspect the cable first.
+- **On a Mac, allow the accessory.** The bootloader shows up as a new USB device,
+  so macOS asks again whether to allow it to connect.

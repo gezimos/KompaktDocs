@@ -1,0 +1,40 @@
+---
+sidebar_position: 2
+title: Per-app modes
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+
+
+# Per-app modes
+
+Both are in the Kompakt app, under Display → **Per-app e-ink modes**.
+
+## Per-app e-ink mode
+
+An app gets its own [e-ink mode](eink#modes) while it is open. When you leave
+it, the mode set on the Display tab comes back.
+
+1. Display → **Per-app e-ink modes** lists every app with the mode it gets.
+2. Tap an app and pick its mode.
+3. **Follow master mode** gives it back the Display tab's mode.
+
+For example: **Text** for a reader, **Fast** for Signal or WhatsApp.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/per-app-list.png" caption="Every app with the mode it will get." />
+  <Screenshot src="/img/screens/per-app-picker.png" caption="Picking a mode for one app, with the invert switch below it." />
+</ScreenshotRow>
+
+## Per-app invert
+
+- For apps that only come with a dark theme, like **Spotify**.
+- Turns that app light, and only that app.
+- Android has no "force light" setting, so inverting is the only way.
+
+Display → Per-app e-ink modes → pick an app → **Invert colours**.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/invert-spotify-off.png" caption="Spotify as it comes: mostly black ink." />
+  <Screenshot src="/img/screens/invert-spotify-on.png" caption="Spotify inverted: white paper, black text." />
+</ScreenshotRow>

@@ -1,0 +1,151 @@
+:root {
+  --ifm-font-family-base: 'Roboto Condensed', system-ui, -apple-system,
+    'Segoe UI', Helvetica, Arial, sans-serif;
+  --ifm-font-family-monospace: ui-monospace, SFMono-Regular, Menlo, Consolas,
+    monospace;
+  --ifm-code-font-size: 92%;
+  --ifm-heading-font-family: var(--ifm-font-family-base);
+  --ifm-dropdown-font-weight: var(--ifm-font-weight-normal);
+}
+
+[data-theme='light'] {
+  --kompakt-paper: #e3e3e3;
+  --kompakt-surface: #ededed;
+  --kompakt-code: #dcdcdc;
+  --kompakt-line: #c9c9c9;
+
+  --ifm-color-primary: #454545;
+  --ifm-color-primary-dark: #3e3e3e;
+  --ifm-color-primary-darker: #3a3a3a;
+  --ifm-color-primary-darkest: #303030;
+  --ifm-color-primary-light: #4c4c4c;
+  --ifm-color-primary-lighter: #505050;
+  --ifm-color-primary-lightest: #5a5a5a;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+
+  --ifm-background-color: var(--kompakt-paper);
+  --ifm-background-surface-color: var(--kompakt-surface);
+  --ifm-navbar-background-color: var(--kompakt-paper);
+  --ifm-toc-border-color: var(--kompakt-line);
+  --ifm-hr-background-color: var(--kompakt-line);
+  --ifm-table-stripe-background: rgba(0, 0, 0, 0.03);
+  --ifm-table-border-color: #c4c4c4;
+  --ifm-blockquote-border-color: var(--kompakt-line);
+
+  --ifm-link-color: #0b57d0;
+  --ifm-link-hover-color: #0842a0;
+}
+
+[data-theme='light'] .navbar,
+[data-theme='light'] .menu,
+[data-theme='light'] .pagination-nav__link,
+[data-theme='light'] .theme-doc-sidebar-container,
+[data-theme='light'] table thead tr {
+  background-color: var(--kompakt-surface);
+}
+
+[data-theme='light'] .navbar,
+[data-theme='light'] .theme-doc-sidebar-container {
+  border-color: var(--kompakt-line);
+}
+
+[data-theme='light'] div[class^='codeBlockContainer'] {
+  background-color: var(--kompakt-code);
+}
+
+[data-theme='light'] .footer {
+  background-color: var(--kompakt-surface);
+  border-top: 1px solid var(--kompakt-line);
+  color: var(--ifm-font-color-base);
+}
+
+[data-theme='dark'] {
+  --ifm-color-primary: #c4c4c4;
+  --ifm-color-primary-dark: #b7b7b7;
+  --ifm-color-primary-darker: #b0b0b0;
+  --ifm-color-primary-darkest: #989898;
+  --ifm-color-primary-light: #d1d1d1;
+  --ifm-color-primary-lighter: #d8d8d8;
+  --ifm-color-primary-lightest: #e4e4e4;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+
+  --ifm-link-color: #ffdd00;
+  --ifm-link-hover-color: #ffe866;
+}
+
+[data-theme='dark'] .footer {
+  background-color: var(--ifm-background-surface-color);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--ifm-font-color-base);
+}
+
+.footer__copyright {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  line-height: 1.5;
+}
+
+.markdown table thead tr {
+  border-bottom-width: var(--ifm-table-border-width);
+}
+
+@media (min-width: 997px) {
+  .markdown table {
+    display: table;
+    width: 100%;
+  }
+
+  .theme-doc-sidebar-container .menu {
+    padding-right: 0.5rem;
+  }
+}
+
+.navbar__logo {
+  height: 1.25rem;
+}
+
+.navbar__items .navbar__link {
+  font-size: 1.125rem;
+}
+
+.navbar__item.dropdown > .navbar__link {
+  font-weight: var(--ifm-font-weight-normal);
+}
+
+.bmc-button {
+  display: flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: #ffdd00;
+  border: 2px solid #000;
+  border-radius: 6px;
+}
+
+.bmc-button img {
+  display: block;
+  height: 22px;
+}
+
+.bmc-button--inline {
+  display: inline-flex;
+  margin-bottom: var(--ifm-spacing-vertical);
+}
+
+.bmc-button--inline img {
+  height: 30px;
+}
+
+.support-page {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+@media (max-width: 996px) {
+  .navbar__items--right .bmc-item {
+    display: flex;
+  }
+
+  .navbar-sidebar .bmc-item {
+    display: none;
+  }
+}

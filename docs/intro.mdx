@@ -1,0 +1,83 @@
+---
+sidebar_position: 1
+title: LineageOS 23.2 Unofficial (Android 16)
+sidebar_label: Intro
+slug: /
+---
+
+# KompaktOS
+
+![KompaktOS: Android 16, LineageOS 23.2, for the Mudita Kompakt](/img/preview.png)
+
+LineageOS 23.2 (Android 16) Unofficial for the **Mudita Kompakt**, an e-ink
+phone built on a MediaTek MT6761 with a 480x800 panel and two SIM slots.
+
+- **KompaktOS is not affiliated with Mudita or LineageOS.** An independent
+  project, and unrelated to CompactOS or Microsoft.
+- We call it KompaktOS because "LineageOS 23.2 (Android 16) Unofficial" is a
+  mouthful.
+- Installing it replaces the software your phone shipped with, and nobody but
+  you is responsible for the result.
+
+## GSI or custom ROM?
+
+Both:
+
+- **Based on a GSI** (generic system image): Treble patches make the system run
+  on the Kompakt.
+- **Ships as a custom ROM**: one full package, with its own LineageOS recovery.
+- The recovery installs updates by adb sideload or over the air (OTA).
+- This build only works on the Kompakt.
+- The patches are open source: you can use them to
+  [build it](develop/building) for other phones.
+
+## Made for e-ink
+
+- Android reskinned for the e-ink screen, in light and dark mode
+- Animations turned off
+- Partial refresh, so the screen flashes less
+- An Auto mode that switches between fast and quality refresh by itself
+- An always-on display that still lets the phone sleep: **3–4% battery
+  overnight**
+- [Per-app e-ink modes](features/per-app): Text for a reader, Fast for Signal
+  or WhatsApp
+- [Per-app invert](features/per-app): for apps that only come with a dark
+  theme, like Spotify
+
+## What works
+
+See [What works](features/what-works) for the full list.
+
+## Security
+
+Android itself carries security patches from **1 August 2026**. Our kernel and
+vendor image are built from Mudita's source and files, so they keep Mudita's
+patch level.
+
+## Easier to install than it was
+
+One file installs everything, from our LineageOS recovery. The SELinux policy
+problems that previously forced a downgrade to 1.1.1 are patched, so no
+partition downgrade is needed.
+
+## Who it's for
+
+**A good fit if:**
+
+- You want current Android security patches
+- You miss basic settings: changing your PIN, the Bluetooth or Wi-Fi name, or
+  joining a hidden network
+- You want full control over sounds, vibration and notifications
+- You need apps that require Google Play services: there is a GApps edition
+- Apps you need no longer install on MuditaOS, which is based on Android 12
+
+**Not for you if:**
+
+- The phone already does what you need
+- You are not comfortable with ADB or mtkclient
+- You need Google Wallet for payments: cards cannot be added
+
+## Where to start
+
+- **[Editions](install/editions)** — vanilla or with Google services
+- **[Install](install/install-kompaktos)** — putting it on the phone

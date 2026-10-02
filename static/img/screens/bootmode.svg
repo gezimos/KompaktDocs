@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="Boot mode menu, reached with power and volume up">
+  <rect width="480" height="800" fill="#000000"/>
+  <!-- one text element per column: whitespace is not reliably preserved -->
+  <g font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="13" fill="#ffffff">
+    <text x="20" y="418">Select Boot Mode:</text>
+    <text x="20" y="435">[VOLUME_UP to select.</text>
+    <text x="200" y="435">VOLUME_DOWN is OK.]</text>
+    <text x="20" y="468">[Recovery</text>
+    <text x="122" y="468">Mode]</text>
+    <text x="20" y="485">[Fastboot</text>
+    <text x="122" y="485">Mode]</text>
+    <text x="200" y="485">&lt;&lt;==</text>
+    <text x="20" y="502">[Normal</text>
+    <text x="122" y="502">Boot]</text>
+  </g>
+</svg>

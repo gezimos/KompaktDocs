@@ -1,0 +1,75 @@
+---
+sidebar_position: 1
+title: Editions
+---
+
+# Editions
+
+Two builds, the same apart from Google. Pick one at install time; switching
+later means installing the other one's package and formatting data.
+
+## Vanilla
+
+No Google services at all. Comes with the LineageOS apps, the **Kompakt app**
+for the settings Android has no home for, and three launchers to choose from:
+**inkOS**, **Katapult** and LineageOS's own.
+
+## GApps
+
+Everything in Vanilla, plus Google Play services, the Play Store and a small
+set of Google apps (the Google app, speech services, Digital Wellbeing and
+TalkBack among them). Anything else you install from the Play Store.
+
+**Google Messages** works, and its RCS chat shows as connected (tested on one
+carrier).
+
+### Two caveats, up front
+
+**The Play Protect popup.** Google shows "This device isn't Play Protect
+certified" until you register the phone's ID with Google. It depends on a list
+of registered devices, not on how the ROM is built, so building differently
+cannot fix it. Registering takes Rooted debugging and a few adb commands. See
+[Post install](/install/post-install#play-protect-popup-gapps).
+
+**Google Wallet.** It installs and runs, but you **cannot add cards**, so
+contactless payment does not work. If that is a requirement, this phone is not
+going to satisfy it.
+
+## Global and North American phones
+
+The Kompakt is sold in two versions, Global and North American (USA), and they
+run different modem firmware. Our vendor image comes in two matching versions.
+The system image is the same for both.
+
+Check which one you have:
+
+```
+adb shell getprop gsm.version.baseband
+```
+
+| It says | Your phone | Take |
+|---|---|---|
+| `MOLY.LR12A.R3.MP.V236.P8` | Global | the files without `usa` |
+| `MOLY.LR12A.R3.MP.V236.P6` | North American | the files with `usa` |
+
+**Use the one that matches.** With the other region's vendor the phone still
+works and has mobile data, but calls over 4G never connect. In North America,
+where every carrier needs 4G calling, that means no calls at all.
+
+## Which file is which
+
+The full update package is named for the edition and the region:
+
+| | GApps | Vanilla |
+|---|---|---|
+| Global | [`KompaktOS-1.0-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-GApps.zip) | [`KompaktOS-1.0-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-Vanilla.zip) |
+| North American | [`KompaktOS-1.0-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-GApps.zip) | [`KompaktOS-1.0-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-Vanilla.zip) |
+
+The recovery, [`KompaktOS-Kernel-LineageOS-Recovery-1.0.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.0/KompaktOS-Kernel-LineageOS-Recovery-1.0.img), is the same for all four.
+
+## Switching between them
+
+Install the other edition's package from the recovery, with **Format
+data/factory reset** first, as for a first install. Keeping your data across a
+switch is not supported: Google Play services landing on data set up without them, or
+disappearing from under apps that used them, tends to leave apps crashing.

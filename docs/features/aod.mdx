@@ -1,0 +1,48 @@
+---
+sidebar_position: 3
+title: Always-on display
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+
+
+# Always-on display
+
+E-ink holds its image without power, so a clock on the screen is nearly free.
+
+## Battery
+
+The always-on display uses its deep sleep state: the phone sleeps, wakes once a
+minute to paint the clock, and goes back to sleep.
+
+Measured overnight cost: **3–4%**.
+
+The clock still updates every minute — the panel is repainted on each tick, and
+notification icons are refreshed in the same repaint rather than paying for a
+second one.
+
+## What shows on it
+
+The clock, notification icons and the battery level. Waking the phone shows the
+lock screen with the notifications in full.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/aod.png" caption="The always-on display: clock, a notification icon, battery level." />
+  <Screenshot src="/img/screens/lockscreen.png" caption="The lock screen, once woken." />
+</ScreenshotRow>
+
+Turn it on or off with the **Always on display** tile in Quick Settings.
+
+<Screenshot src="/img/screens/aod-qs-tile.png" caption="Quick Settings, with the always-on display tile (second row) on." />
+
+Notification icons are limited in number, with anything beyond the limit
+collapsing into a single overflow dot. That limit exists because each icon is
+drawn in the same once-a-minute repaint, and a row that never settles is a row
+that costs a refresh every time it changes.
+
+## Why it repaints at all
+
+A bistable panel keeps whatever was last driven into it, including when the
+phone is off. That is why a black frame can persist through a reboot, and why
+the AOD needs an explicit repaint each minute rather than simply "staying on" —
+nothing stays on; the ink is just still there from last time.

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="Android recovery, choosing a package from the SD card">
+  <rect width="480" height="800" fill="#000000"/>
+  <g font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" fill="#ffffff">
+    <text x="20" y="46" font-weight="bold">Android Recovery</text>
+    <text x="20" y="72">Mudita/Kompakt/Kompakt</text>
+    <text x="20" y="98">12/SP1A.210812.016/20260731</text>
+    <text x="20" y="124">user/dev-keys</text>
+    <text x="20" y="150">Use volume up/down and power.</text>
+    <text x="20" y="176">Choose a package to install:</text>
+    <text x="20" y="202">/sdcard</text>
+    <line x1="14" y1="218" x2="466" y2="218" stroke="#ffffff" stroke-width="2"/>
+    <rect x="14" y="228" width="452" height="24" fill="#ffffff"/>
+    <text x="20" y="244" fill="#000000">../</text>
+    <text x="20" y="272">Kompakt-1.6.0.signed.user-ota.zip</text>
+    <text x="20" y="300">Android/</text>
+    <text x="20" y="328">DCIM/</text>
+    <text x="20" y="356">Download/</text>
+    <text x="20" y="384">Music/</text>
+    <text x="20" y="412">Pictures/</text>
+  </g>
+</svg>

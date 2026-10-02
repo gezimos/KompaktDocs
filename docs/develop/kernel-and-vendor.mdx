@@ -1,0 +1,54 @@
+---
+title: Kernel and vendor
+---
+
+# Kernel and vendor
+
+KompaktOS comes with its own `boot` and `vendor` images, built from Mudita's
+published source with fixes on top. The update package installs them together
+with the system. This page lists what they add.
+
+## What our vendor adds
+
+`vendor.img` carries the e-ink driver modules and the hardware permissions, so
+most of what you notice comes from here.
+
+- **Partial e-ink updates.** Only the part of the screen that changed is
+  redrawn, not the whole screen every time, so it flashes far less and the
+  quality modes are usable day to day.
+- **Auto e-ink mode.** Fast while the screen moves, full quality once it
+  settles. Set it per app in the Kompakt app.
+- **E-ink settings that work.** The Kompakt app can change the refresh mode,
+  manual mode, temperature offset and dithering.
+- **A charge limit that is enforced.** Charging stops where you set it.
+- **Fingerprint scrolling.** Swipe along the sensor to scroll. See
+  [Fingerprint](/features/hardware/fingerprint).
+- **Your own sleep screen.** The picture shown while the phone sleeps can be set
+  from the Kompakt app. See
+  [Sleep screen](/features/sleep-screen).
+
+## What our boot adds
+
+`boot.img` is the kernel, and with it the recovery.
+
+- **Correct battery health.** The design capacity is reported as it is, about
+  3000 mAh, so battery health reads right.
+- **A real charge cycle count.** It shows in the Kompakt app and in Android's
+  battery settings.
+- **An always-on display that lets the phone sleep.** The display wakes
+  cleanly from the always-on state, so the phone sleeps between clock updates:
+  3–4% overnight. See
+  [Always-on display](/features/aod).
+- **A recovery that installs KompaktOS updates.** Our boot comes with LineageOS
+  recovery, which installs a KompaktOS update from a single file, over USB or
+  from the SD card.
+
+## Always as a pair
+
+Our `boot` and `vendor` are built and tested together, and every update package
+installs both. The vendor comes in a Global and a North American version, to
+match the phone's modem; see
+[Editions](/install/editions#global-and-north-american-phones).
+
+To go back to MuditaOS later you need Mudita's recovery again; see
+[Going back](/install/going-back).

@@ -1,0 +1,73 @@
+---
+sidebar_position: 1
+title: Building
+---
+
+# Building
+
+KompaktOS is a LineageOS 23.2 GSI plus a patch series, a vendor overlay and a
+handful of device apps. The kernel and the vendor image are built separately.
+
+## Repositories
+
+| Repository | Holds |
+| --- | --- |
+| `KompaktOS` | The GSI: local manifests, the patch series, `vendor/kompakt`, build script |
+| `KompaktDevice` | Kernel, device tree, vendor blobs and the hardware documentation |
+
+## The GSI
+
+You need a LineageOS 23.2 tree, the local manifests from this repository, and
+around 400 GB of disk.
+
+```
+repo init -u https://github.com/LineageOS/android.git -b lineage-23.2
+cp local_manifests/*.xml .repo/local_manifests/
+repo sync -c -j8
+bash patches/apply-patches.sh .
+source build/envsetup.sh
+lunch lineage_arm64_bgN4-bp4a-userdebug
+make systemimage
+```
+
+`bgN4` is the GApps variant and `bvN4` is vanilla. They differ by one inherited
+makefile.
+
+The patch series under `patches/kompakt/` is a `git format-patch` set per
+upstream project, applied with `git am`, so a conflict tells you which change it
+belongs to when LineageOS moves.
+
+## Verify before a full build
+
+A module build takes a few minutes and catches what a full build would catch
+hours later:
+
+```
+m SystemUI Settings KompaktService services.core -j12
+```
+
+This matters for makefile variables as much as for code. A product variable with
+the wrong syntax does not fail the build, it is silently ignored, and the only
+way to find out is to inspect what came out.
+
+The same applies to resource overlays. An overlay landing in a file proves
+nothing — check the built RRO:
+
+```
+aapt2 dump resources out/.../Settings__..._auto_generated_rro_product.apk
+```
+
+## The kernel
+
+Built from the Mudita sources in `KompaktDevice`, with clang and an explicit
+`CROSS_COMPILE=aarch64-linux-gnu-`. The Android triple builds a kernel that
+compiles and never boots.
+
+**The kernel config is frozen.** Every module in `/vendor/lib/modules` is a Mudita prebuilt, one of which is
+proprietary and cannot be rebuilt. `CONFIG_MODVERSIONS` is on, so any config
+change that alters a struct layout changes `module_layout` and the kernel then
+refuses to load **all** of them — Wi-Fi, Bluetooth, GPS, the panel.
+
+Check module symbol CRCs against `Module.symvers` before writing a boot image,
+and treat a mismatch as fatal. `boot.img` also carries the only recovery, so
+there is no easy way back.

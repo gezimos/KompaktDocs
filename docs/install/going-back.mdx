@@ -1,0 +1,110 @@
+---
+title: Going back
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Going back
+
+You put MuditaOS back with Mudita's official update package, a file named like
+`Kompakt-1.6.0.signed.user-ota.zip`, installed from the phone's recovery.
+
+## Steps
+
+1. **Restart into the bootloader.**
+
+   <Tabs groupId="method">
+   <TabItem value="cmd" label="Command" default>
+
+   With the phone connected by USB:
+
+   ```
+   adb reboot bootloader
+   ```
+
+   </TabItem>
+   <TabItem value="buttons" label="Buttons">
+
+   Hold **Power and Volume-Up** and pick **Fastboot Mode**.
+
+   </TabItem>
+   </Tabs>
+
+2. **Put Mudita's recovery back.** KompaktOS runs with our LineageOS recovery,
+   and Mudita's package has to go through Mudita's own. The recovery lives in
+   the boot image, so still in the bootloader, flash Mudita's boot image for
+   the MuditaOS version you are installing:
+
+   ```
+   fastboot flash boot /path/to/mudita_boot.img
+   ```
+
+3. **Open recovery.**
+
+   <Tabs groupId="method">
+   <TabItem value="cmd" label="Command" default>
+
+   Still in the bootloader:
+
+   ```
+   fastboot reboot recovery
+   ```
+
+   </TabItem>
+   <TabItem value="buttons" label="Buttons">
+
+   Hold **Power and Volume-Up**, press Volume-Up until the arrow points at
+   **Recovery Mode**, then Volume-Down to pick it. The screen is slow here:
+   wait a few seconds after each press.
+
+   <Screenshot src="/img/screens/bootmode-recovery.svg" caption="Boot mode menu, Recovery Mode selected." />
+
+   </TabItem>
+   </Tabs>
+
+4. **Wake the menu.** Recovery usually opens on the fallen Android. Hold
+   **Power** for 2–3 seconds and, still holding it, tap **Volume-Up** once.
+
+   <Screenshot src="/img/screens/deadandroid.png" caption="No command. Recovery is waiting." />
+
+5. **Install the package.** Volume-Up and Volume-Down move, Power selects.
+
+   <Screenshot src="/img/screens/recovery-apply.svg" caption="Mudita's recovery menu, Apply update from ADB selected." />
+
+   Choose **Apply update from ADB**, then on the computer:
+
+   ```
+   adb sideload Kompakt-1.6.0.signed.user-ota.zip
+   ```
+
+   Drag the file onto the terminal to paste its path. Or choose **Apply update
+   from SD card** and pick the package from the card.
+
+   <ScreenshotRow>
+     <Screenshot
+       src="/img/screens/recovery-sideload.svg"
+       caption="Apply update from ADB. Recovery waits for adb sideload."
+     />
+     <Screenshot
+       src="/img/screens/recovery-sdcard.svg"
+       caption="Apply update from SD card. Pick the package from the card."
+     />
+   </ScreenshotRow>
+
+6. **Restart.** When the install finishes, choose **Reboot system now**.
+   MuditaOS asks for a factory reset first: do it, and MuditaOS starts.
+
+## If recovery does not open in step 3
+
+Flash Mudita's boot image for your MuditaOS version again from the
+bootloader, then go back to step 3:
+
+```
+fastboot flash boot boot.img
+```
+
+## Coming back to KompaktOS later
+
+Nothing extra: flash KompaktOS as usual.

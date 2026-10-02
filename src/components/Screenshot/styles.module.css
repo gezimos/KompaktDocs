@@ -1,0 +1,32 @@
+.figure {
+  margin: 1.5rem 0;
+  max-width: 300px;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.row .figure {
+  margin: 1.5rem 0 0.5rem;
+  flex: 0 1 300px;
+}
+
+.shot {
+  display: block;
+  width: 100%;
+  aspect-ratio: 3 / 5;
+  object-fit: contain;
+  border-radius: 4px;
+  background-color: transparent;
+}
+
+.caption {
+  margin-top: 0.5rem;
+  font-size: 0.82rem;
+  line-height: 1.35;
+  opacity: 0.8;
+}

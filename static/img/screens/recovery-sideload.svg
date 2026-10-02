@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="Android recovery, waiting for adb sideload">
+  <rect width="480" height="800" fill="#000000"/>
+  <g font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" fill="#ffffff">
+    <text x="20" y="708">Now send the package you want to apply</text>
+    <text x="20" y="732">to the device with</text>
+    <text x="20" y="756">"adb sideload &lt;filename&gt;"...</text>
+  </g>
+</svg>

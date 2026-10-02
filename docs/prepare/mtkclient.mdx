@@ -1,0 +1,40 @@
+---
+title: mtkclient
+---
+
+# mtkclient
+
+[mtkclient](https://github.com/bkerler/mtkclient) makes a full backup of your
+phone over USB.
+
+- **Optional, but strongly recommended**, even if you never install KompaktOS.
+- If anything ever goes wrong, it puts your phone back as it was.
+- You only do it once.
+
+## Install
+
+Follow mtkclient's own guide for your computer:
+
+- **macOS and Linux:** [installation guide](https://github.com/bkerler/mtkclient/blob/main/README-INSTALL.md)
+- **Windows:** [installation guide](https://github.com/bkerler/mtkclient/blob/main/README-WINDOWS.md),
+  or the [automated Windows installer](https://github.com/codefl0w/mtkclient-windows-installer)
+- **Using it:** [usage guide](https://github.com/bkerler/mtkclient/blob/main/README-USAGE.md)
+
+## Back up
+
+1. Start the mtkclient window (`mtk_gui`), as its guide describes.
+2. Turn off the phone and unplug it.
+3. Hold **Volume-Up and Volume-Down** while you plug in USB. Keep holding until
+   mtkclient shows the phone.
+4. **Read partition(s)** tab: tick **Select all partitions**, click
+   **Read partition(s)** and pick an empty folder.
+
+**Optional:** untick **userdata** to save hours. It is most of the storage, it
+is encrypted, and installing formats it anyway.
+
+- Keep that folder safe.
+- Use nothing else in mtkclient: **Erase** and **Flash Tools** can break the
+  phone for good.
+
+If the phone ever stops starting, [Last resort](/develop/last-resort) puts
+it back from this backup.

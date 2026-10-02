@@ -1,0 +1,66 @@
+---
+sidebar_position: 2
+title: Battery
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+
+
+# Battery
+
+The Kompakt keeps its own charge history, and KompaktOS shows it. Kompakt app →
+**Settings → Battery**.
+
+## Charge limit
+
+<Screenshot src="/img/screens/battery-kompakt.png" caption="Kompakt app → Settings → Battery: cycles, health, capacity, and the charge limit." />
+
+Pick a level between 80 and 100. Charging stops there and resumes a little
+below it.
+
+A charge limit can only **stop** charging. It will not bring a battery that is
+already at 100% back down, so nothing appears to happen until the level falls
+below the resume point and charges again. The **Right now** row on the same page
+tells you what the charger is actually doing:
+
+| Row says | Meaning |
+| --- | --- |
+| Stopped at limit | Plugged in, charging held |
+| Charging | Plugged in, charging |
+| Full | At 100% |
+| Not plugged in | On battery |
+
+Keeping the limit under 100 is the single most effective thing you can do for
+how long the pack lasts over years.
+
+## Cycles, capacity and health
+
+- **Cycles** — full-charge equivalents, counted by the vendor firmware. Not a
+  count of how many times you plugged in.
+- **Capacity** — what the gauge believes the pack holds now, against its
+  nominal 3000 mAh.
+- **First used** — stamped once, on first boot.
+
+The cycle count also appears in Android's own Settings → Battery → Battery
+information.
+
+Android's own battery screens work as usual: **Battery usage** shows the level
+and screen time since the last full charge, and **Battery Manager** limits apps
+you rarely use.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/battery-usage.png" caption="Settings → Battery → Battery usage." />
+  <Screenshot src="/img/screens/battery-manager.png" caption="Settings → Battery → Battery Manager." />
+</ScreenshotRow>
+
+**Where the history lives.** Cycles and the first-use date are kept on a
+separate partition of the phone, not by Android,
+which is why they survive reinstalling the OS — including going back to
+MuditaOS and returning.
+
+## Capacity figures, honestly
+
+Android reports capacity from a fuel-gauge table rather than by measuring the
+cell, and that table does not change as the battery ages. The health percentage
+derived from it is therefore stable rather than meaningful. Treat the **cycle
+count** as the real indicator of wear.

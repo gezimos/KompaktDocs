@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="Bootloader, fastboot mode">
+  <rect width="480" height="800" fill="#000000"/>
+  <g font-family="'Roboto Mono','DejaVu Sans Mono',monospace" fill="#ffffff">
+    <text x="20" y="700" font-size="15" font-weight="normal" text-anchor="start" fill="#ffffff">=&gt; FASTBOOT mode...</text>
+  </g>
+</svg>

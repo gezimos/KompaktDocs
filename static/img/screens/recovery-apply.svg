@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="Android recovery menu, Apply update from ADB selected">
+  <rect width="480" height="800" fill="#000000"/>
+  <g font-family="'Roboto Mono','DejaVu Sans Mono',monospace" fill="#ffffff">
+    <text x="20" y="46" font-size="16" font-weight="bold" text-anchor="start" fill="#ffffff">Android Recovery</text>
+    <text x="20" y="72" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Mudita/Kompakt/Kompakt</text>
+    <text x="20" y="98" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">12/SP1A.210812.016/20260731</text>
+    <text x="20" y="124" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">user/dev-keys</text>
+    <text x="20" y="150" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Use volume up/down and power.</text>
+    <line x1="14" y1="166" x2="466" y2="166" stroke="#ffffff" stroke-width="2"/>
+    <rect x="14" y="260" width="452" height="24" fill="#ffffff"/>
+    <text x="20" y="192" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Reboot system now</text>
+    <text x="20" y="220" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Reboot to bootloader</text>
+    <text x="20" y="248" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Enter fastboot</text>
+    <text x="20" y="276" font-size="16" font-weight="normal" text-anchor="start" fill="#000000">Apply update from ADB</text>
+    <text x="20" y="304" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Apply update from SD card</text>
+    <text x="20" y="332" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Wipe data/factory reset</text>
+    <text x="20" y="360" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Mount /system</text>
+    <text x="20" y="388" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">View recovery logs</text>
+    <text x="20" y="416" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Run graphics test</text>
+    <text x="20" y="444" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Run locale test</text>
+    <text x="20" y="472" font-size="16" font-weight="normal" text-anchor="start" fill="#ffffff">Power off</text>
+    <line x1="14" y1="488" x2="466" y2="488" stroke="#ffffff" stroke-width="2"/>
+  </g>
+</svg>

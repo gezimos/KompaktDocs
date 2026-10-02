@@ -1,0 +1,103 @@
+---
+title: Updates
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+
+# Updates
+
+Your apps, accounts and settings stay. No wipe is needed.
+
+## Over the air
+
+1. Settings → System → **System updates** → **Check for updates**. A new
+   update shows up under it, named by its date.
+2. Tap the update, then **Install**.
+3. Tap **OK**. It installs in the background: you can keep using the phone.
+4. When it says **Update pending reboot**, tap **Reboot**.
+
+- The phone needs at least 30% battery, or 20% while charging.
+- It picks the right package for your phone and edition by itself.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/ota-1-found.png" caption="1. A new update after Check for updates." />
+  <Screenshot src="/img/screens/ota-2-install.png" caption="2. The update opened: tap Install." />
+  <Screenshot src="/img/screens/ota-3-apply.png" caption="3. Tap OK to start." />
+  <Screenshot src="/img/screens/ota-4-installing.png" caption="Installing in the background." />
+  <Screenshot src="/img/screens/ota-5-reboot.png" caption="4. Done: tap Reboot." />
+  <Screenshot src="/img/screens/ota-6-restarting.png" caption="The phone restarts into the new version." />
+</ScreenshotRow>
+
+## By hand, from the recovery
+
+The same update package as the first install, installed from the recovery.
+Take the one for your phone and edition:
+
+| | GApps | Vanilla |
+|---|---|---|
+| Global | [`KompaktOS-1.0-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-GApps.zip) | [`KompaktOS-1.0-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-Vanilla.zip) |
+| North American | [`KompaktOS-1.0-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-GApps.zip) | [`KompaktOS-1.0-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-Vanilla.zip) |
+
+### Open the recovery
+
+```
+adb reboot recovery
+```
+
+LineageOS recovery works both by touch and with the buttons: Volume-Up and
+Volume-Down to move, Power to select.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-select-apply.svg" caption="The LineageOS recovery, with Apply update selected." />
+  <Screenshot src="/img/screens/lineage-recovery-apply.svg" caption="Apply update: over USB, or from the SD card." />
+</ScreenshotRow>
+
+### Over USB
+
+1. **Apply update** → **Apply from ADB**.
+2. On the computer:
+
+   ```
+   adb sideload /path/to/KompaktOS-1.0-Global-GApps.zip
+   ```
+
+The computer's counter stops at about 47% and stays there. That is normal: the
+phone has read the whole file and installs it from memory. Watch the bar on the
+phone instead.
+
+<Screenshot src="/img/screens/lineage-recovery-sideload.svg" caption="Waiting for adb sideload." />
+
+### From the SD card
+
+1. Copy the update package to the SD card.
+2. **Apply update** → **Choose from sdcard1**, and pick the file.
+
+<Screenshot src="/img/screens/lineage-recovery-sdcard.svg" caption="Picking the update package on the SD card." />
+
+### While it installs
+
+It checks the package first, then installs it, with a bar and a percentage at
+the bottom. It takes about 7 minutes. **Do not interrupt it:** the phone is not
+usable until the install finishes.
+
+<Screenshot src="/img/screens/lineage-recovery-installing.svg" caption="Installing, with the bar at the bottom." />
+
+### When it finishes
+
+It asks whether to reboot to recovery to install more packages. Choose **No**,
+then **Reboot system now**.
+
+<Screenshot src="/img/screens/lineage-recovery-reboot-prompt.svg" caption="Choose No, then Reboot system now." />
+
+The phone now runs from the other slot, A or B. That is normal: see
+[Slots A and B](/develop/understanding-android#slots-a-and-b).
+
+### The recovery's other menus
+
+**Advanced** has fastbootd (**Enter fastboot**), the bootloader, the recovery
+log and power off.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-advanced.svg" caption="Advanced." />
+  <Screenshot src="/img/screens/lineage-fastbootd.svg" caption="fastbootd, from Enter fastboot." />
+</ScreenshotRow>

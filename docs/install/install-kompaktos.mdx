@@ -1,0 +1,126 @@
+---
+title: Install
+---
+
+import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+# Install
+
+1. Put our recovery on the phone. Only once.
+2. Format data, if you are coming from MuditaOS or another system.
+3. Install the update package from the recovery.
+
+## What you need
+
+- An unlocked bootloader: see [Unlocking](/prepare/unlocking).
+- [`KompaktOS-Kernel-LineageOS-Recovery-1.0.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.0/KompaktOS-Kernel-LineageOS-Recovery-1.0.img): our kernel and recovery.
+- One update package, for your phone and edition:
+
+| | GApps | Vanilla |
+|---|---|---|
+| Global | [`KompaktOS-1.0-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-GApps.zip) | [`KompaktOS-1.0-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-Global-Vanilla.zip) |
+| North American | [`KompaktOS-1.0-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-GApps.zip) | [`KompaktOS-1.0-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.0/KompaktOS-1.0-USA-Vanilla.zip) |
+
+Not sure which phone you have? See
+[Editions](/install/editions#global-and-north-american-phones).
+
+The md5 of every file is on its release page:
+[KompaktOS 1.0](https://github.com/gezimos/KompaktOS/releases/tag/v1.0) and
+[the recovery](https://github.com/gezimos/KompaktDevice/releases/tag/v1.0).
+
+## 1. Put the recovery on the phone
+
+<Tabs groupId="start">
+<TabItem value="bootloader" label="Already in the bootloader">
+
+You just unlocked the bootloader with [Unlocking](/prepare/unlocking) and the
+phone has not restarted since.
+
+```
+fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.0.img
+fastboot reboot recovery
+```
+
+</TabItem>
+<TabItem value="booted" label="Booted in MuditaOS">
+
+The phone is on, with an unlocked bootloader and USB debugging turned on.
+
+```
+adb reboot bootloader
+fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.0.img
+fastboot reboot recovery
+```
+
+</TabItem>
+</Tabs>
+
+- Drag the file onto the terminal window to paste its path, or copy and paste
+  the path if your system allows it.
+- Only needed once: every update package brings the recovery with it.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/bootloader.svg" caption="The bootloader, where boot is flashed." />
+  <Screenshot src="/img/screens/lineage-recovery.svg" caption="The LineageOS recovery, after fastboot reboot recovery." />
+</ScreenshotRow>
+
+LineageOS recovery works both by touch and with the buttons: Volume-Up and
+Volume-Down to move, Power to select.
+
+## 2. Coming from another system: format data
+
+In the recovery: **Factory reset** → **Format data/factory reset**.
+
+- **Erases everything on the phone.** Back up first: see [Backup](/features/backup).
+- Skip it if the phone already runs KompaktOS.
+- Forgot? Do it after step 3, before restarting.
+
+## 3. Install the package
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-select-apply.svg" caption="Tap Apply update." />
+  <Screenshot src="/img/screens/lineage-recovery-apply.svg" caption="Then Apply from ADB, or the SD card." />
+</ScreenshotRow>
+
+1. **Apply update** → **Apply from ADB**.
+2. On the computer:
+
+   ```
+   adb sideload /path/to/KompaktOS-1.0-Global-GApps.zip
+   ```
+
+The computer's counter stops at about 47% and stays there. That is normal: the
+phone has read the whole file and installs it from memory. Watch the bar on the
+phone instead. It takes about 7 minutes. **Do not interrupt it.**
+
+You can also install from the SD card instead of over USB: see
+[Updates](/install/updates#from-the-sd-card).
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-sideload.svg" caption="Waiting for adb sideload." />
+  <Screenshot src="/img/screens/lineage-recovery-installing.svg" caption="Installing, with the bar at the bottom." />
+</ScreenshotRow>
+
+## 4. Restart
+
+When it finishes, it asks whether to reboot to recovery to install more
+packages. Choose **No**, then **Reboot system now**.
+
+<Screenshot src="/img/screens/lineage-recovery-reboot-prompt.svg" caption="Choose No, then Reboot system now." />
+
+The phone now runs from the other slot, A or B. That is normal: see
+[Slots A and B](/develop/understanding-android#slots-a-and-b).
+
+## The first start
+
+The first start takes several minutes, and the phone can feel slow for a while
+after: see [The first start](/install/post-install#the-first-start).
+
+## Next
+
+- **Post install:** most carriers need calls over 4G, which needs one extra
+  install. See [Post install](/install/post-install).
+- **Later updates:** the same package, the same way, without the first two
+  steps. See [Updates](/install/updates).
