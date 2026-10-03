@@ -6,13 +6,21 @@ import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 
 # Post install
 
+After installing, in this order:
+
+1. [Wait out the first start](#the-first-start).
+2. [Choose a launcher](#choose-a-launcher).
+3. [Set up calls over 4G](#calls-over-4g-volte), needed to make calls on most
+   networks.
+4. Optional: [turn on Wi-Fi calling](#wi-fi-calling).
+5. GApps edition: [remove the Play Protect popup](#play-protect-popup-gapps).
+
 ## The first start
 
 - **The first boot takes several minutes.** The e-ink panel only repaints when
   something changes, so it can look stuck: leave it alone for five minutes.
 - **After that, the phone can feel slow for a while.** Android is still
-  setting up apps in the background.
-- **Once that finishes, it is snappy again.** Nothing to do but wait.
+  setting up apps in the background. It is snappy again once that finishes.
 
 ## Choose a launcher
 
@@ -26,7 +34,8 @@ On first boot, the phone asks you to choose your default launcher:
   <Screenshot src="/img/screens/launcher-katapult.png" caption="Katapult." />
 </ScreenshotRow>
 
-**inkOS**
+<details>
+<summary>inkOS settings</summary>
 
 - Its swipe-down gesture opens its own notification and toggle window, which
   gets in the way of Android's. Turn it off: inkOS settings → **Gestures** →
@@ -34,12 +43,18 @@ On first boot, the phone asks you to choose your default launcher:
 - To show the status bar: inkOS settings → **Look and feel** → **Enable status
   bar**.
 
-**Katapult**
+</details>
+
+<details>
+<summary>Katapult settings</summary>
 
 - To show the status bar: Katapult settings → **Appearance** → turn off **Hide
   status bar**.
 
-## Notifications and quick settings
+</details>
+
+<details>
+<summary>Notifications and quick settings</summary>
 
 - **Swipe down from the top left** for notifications.
 - **Swipe down from the top right** for quick settings.
@@ -49,54 +64,84 @@ On first boot, the phone asks you to choose your default launcher:
   <Screenshot src="/img/screens/shade-quick-settings.png" caption="Quick settings, from the top right." />
 </ScreenshotRow>
 
+</details>
+
 ## Calls over 4G (VoLTE)
 
-Where 2G and 3G are switched off, every call goes over 4G. Without 4G calling
-the phone has signal and mobile data and still cannot make or receive calls.
+Where 2G and 3G are switched off, every call goes over 4G. Without it the
+phone has signal and mobile data and still cannot make or receive calls. You
+set it up once.
 
-- 4G calling needs MediaTek's IMS app, which KompaktOS cannot include.
-- You set it up once.
-- The IMS settings are in **Settings** → **System** → **TrebleDroid Settings** →
-  **IMS features**.
+1. **Settings** → **System** → **TrebleDroid Settings** → **IMS features** →
+   **Install IMS APK for MediaTek R+ vendor**.
+2. Open the download from the notification, or from **Files** → Downloads, and
+   install it. With Google Play services, tap **Install anyway** at the alert.
+3. Restart the phone.
+4. Settings → **Network & internet** → **SIMs** → your SIM → turn on **VoLTE**.
 
 <ScreenshotRow>
   <Screenshot src="/img/screens/ims-1-system.png" caption="Settings → System → TrebleDroid Settings." />
   <Screenshot src="/img/screens/ims-2-trebledroid.png" caption="IMS features." />
-  <Screenshot src="/img/screens/ims-3-features.png" caption="Install the IMS APK, then force the 4G Calling setting." />
+  <Screenshot src="/img/screens/ims-3-features.png" caption="Install the IMS APK." />
 </ScreenshotRow>
 
-1. In **IMS features**, tap **Install IMS APK for
-   MediaTek R+ vendor**.
-2. When the download finishes, open it from the notification, or find it in
-   **Files** under Downloads, and tap it to install. If you use Google Play
-   services, you get an alert about it: tap **Install anyway**.
+<details>
+<summary>Why the IMS app is a separate download</summary>
+
+- 4G calling needs MediaTek's IMS app, which KompaktOS cannot include.
+- It is installed once and survives updates.
+
+</details>
+
+<details>
+<summary>Calls over 4G do not work</summary>
+
+1. In **IMS features**, check that **Force the presence of 4G Calling
+   setting** is on. It is on by default; without it some SIMs hide the VoLTE
+   switch.
+2. Calls over 4G need an `ims` access point name for your carrier. KompaktOS
+   includes one for most carriers; if yours is missing, tap **Create IMS APN**
+   in **IMS features**. A message confirms it was added.
 3. Restart the phone.
-4. In **IMS features**, turn on **Force the presence of
-   4G Calling setting**. Some SIMs hide the VoLTE switch otherwise.
-5. Settings → **Network & internet** → **SIMs** → your SIM, and turn on
-   **VoLTE**.
-6. Check it registered: Kompakt app → **Settings** → **Diagnostics** → **Calls
-   over 4G**. You want **IMS app** Installed, **4G Calling** On and
-   **Registered** Yes. Registering can take a minute after the restart.
+4. Still No: ask your carrier for their APN settings, including the `ims` APN,
+   and add them in Settings → **Network & internet** → **SIMs** → your SIM →
+   **Access Point Names**.
 
-### If Registered stays No
+</details>
 
-Check with your carrier for the correct APN settings, including the `ims` APN,
-and add them in Settings → **Network & internet** → **SIMs** → your SIM →
-**Access Point Names**. Then restart the phone.
+## Wi-Fi calling
+
+Make and receive calls over Wi-Fi where the mobile signal is weak or missing. Set up
+[calls over 4G](#calls-over-4g-volte) first.
+
+1. Settings → **Network & internet** → **SIMs** → your SIM → **Wi-Fi
+   calling**.
+2. Turn on **Use Wi-Fi calling**.
+3. **Calling preference**:
+   - **Wi-Fi preferred**: calls use Wi-Fi whenever you are connected to it.
+   - **Mobile preferred**: calls use Wi-Fi only when there is no mobile
+     signal.
+
+- **To test it**, turn on airplane mode, turn Wi-Fi back on, wait a few
+  seconds and make a call. With no mobile signal, the call can only go over
+  Wi-Fi.
+- **Your carrier must offer Wi-Fi calling.** If it does not, nothing changes:
+  calls still go over 4G.
 
 ## Play Protect popup (GApps)
 
-On the GApps edition Google may trigger Play Protect, which stops you from
-using the Play Store and other Google apps.
+On the GApps edition Google may show "This device isn't Play Protect
+certified", which stops the Play Store and other Google apps. Registering the
+phone's device ID once with Google removes it: updates keep it, only a factory
+reset undoes it.
+
+<a className="button button--primary button--lg" href="https://www.google.com/android/uncertified/" target="_blank" rel="noopener noreferrer">Register at google.com/android/uncertified</a>
 
 <Screenshot src="/img/screens/play-protect-uncertified.png" caption="This device isn't Play Protect certified." />
 
-To avoid this, I recommend doing the following after you have finished setting
-up your device. You only need to do it once: updates keep it, only a factory
-reset undoes it.
+### Find the device ID and register it
 
-You need [adb](/prepare/unlocking#1-install-adb).
+Do this after setting up the phone. You need [adb](/prepare/unlocking#1-install-adb).
 
 1. Settings → System → Developer options → turn on **Rooted debugging**
    (with **USB debugging** on).
@@ -110,15 +155,18 @@ You need [adb](/prepare/unlocking#1-install-adb).
    It prints `android_id|` and a long number. That number is your ID.
 3. Open [google.com/android/uncertified](https://www.google.com/android/uncertified/),
    sign in with the Google account you use on the phone, and paste the number.
-4. Make the phone pick it up:
+4. Restart the phone.
+5. **Only if the popup is still there:** make the phone check again, then
+   restart once more.
 
    ```
+   adb root
    adb shell am broadcast -a android.server.checkin.CHECKIN
    adb shell rm -f /data/data/com.google.android.gms/files/gmscompliance/shared/cache.pb
    adb shell 'rm -rf /data/data/com.android.vending/cache/*'
    ```
 
-5. Restart the phone, then turn **Rooted debugging** off again.
+6. Turn **Rooted debugging** off again.
 
-Settings may still say "not certified". What counts is that the popup is gone
-and the Play Store opens and installs apps.
+Google Play Protect will still say "not certified". What counts is that the
+popup is gone and the Play Store opens and installs apps.
