@@ -149,3 +149,26 @@
     display: none;
   }
 }
+
+/* Accordions: the site's greys instead of Docusaurus's blue info alert. */
+.markdown details.alert {
+  --ifm-alert-background-color: var(--ifm-background-surface-color);
+  --ifm-alert-background-color-highlight: rgba(0, 0, 0, 0.05);
+  --ifm-alert-foreground-color: var(--ifm-font-color-base);
+  --ifm-alert-border-color: var(--ifm-color-emphasis-400);
+  --docusaurus-details-decoration-color: var(--ifm-color-emphasis-400);
+  box-shadow: none;
+}
+
+[data-theme='light'] .markdown details.alert {
+  --ifm-alert-border-color: var(--kompakt-line);
+  --docusaurus-details-decoration-color: var(--kompakt-line);
+}
+
+[data-theme='dark'] .markdown details.alert {
+  --ifm-alert-background-color-highlight: rgba(255, 255, 255, 0.05);
+}
+
+.markdown details.alert > summary {
+  font-weight: var(--ifm-font-weight-semibold);
+}

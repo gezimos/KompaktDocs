@@ -50,6 +50,7 @@ const sidebars: SidebarsConfig = {
       label: 'Extras',
       items: ['develop/understanding-android', 'develop/kernel-and-vendor', 'develop/building', 'develop/last-resort'],
     },
+    'changelog',
     'credits',
   ],
 };
