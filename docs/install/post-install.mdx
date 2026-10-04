@@ -76,8 +76,10 @@ set it up once.
    **Install IMS APK for MediaTek R+ vendor**.
 2. Open the download from the notification, or from **Files** → Downloads, and
    install it. With Google Play services, tap **Install anyway** at the alert.
-3. Restart the phone.
-4. Settings → **Network & internet** → **SIMs** → your SIM → turn on **VoLTE**.
+3. In the same **IMS features** page, check that **Force the presence of 4G
+   Calling setting** is on.
+4. Restart the phone.
+5. Settings → **Network & internet** → **SIMs** → your SIM → turn on **VoLTE**.
 
 <ScreenshotRow>
   <Screenshot src="/img/screens/ims-1-system.png" caption="Settings → System → TrebleDroid Settings." />
@@ -93,21 +95,15 @@ set it up once.
 
 </details>
 
-<details>
-<summary>Calls over 4G do not work</summary>
+### Still no calls? Check the IMS APN
 
-1. In **IMS features**, check that **Force the presence of 4G Calling
-   setting** is on. It is on by default; without it some SIMs hide the VoLTE
-   switch.
-2. Calls over 4G need an `ims` access point name for your carrier. KompaktOS
+1. Calls over 4G need an `ims` access point name for your carrier. KompaktOS
    includes one for most carriers; if yours is missing, tap **Create IMS APN**
    in **IMS features**. A message confirms it was added.
-3. Restart the phone.
-4. Still No: ask your carrier for their APN settings, including the `ims` APN,
+2. Restart the phone.
+3. Still not working: ask your carrier for their APN settings, including the `ims` APN,
    and add them in Settings → **Network & internet** → **SIMs** → your SIM →
    **Access Point Names**.
-
-</details>
 
 ## Wi-Fi calling
 

@@ -8,10 +8,15 @@ import TabItem from '@theme/TabItem';
 
 # Going back
 
-You put MuditaOS back with Mudita's official update package, a file named like
+Choose one:
+
+<Tabs groupId="going-back">
+<TabItem value="ota" label="Mudita's update package" default>
+
+Mudita's official update package, a file named like
 `Kompakt-1.6.0.signed.user-ota.zip`, installed from the phone's recovery.
 
-## Steps
+Had a PIN or pattern on KompaktOS? [Erase FRP](/install/erase-frp) first. Recommended.
 
 1. **Restart into the bootloader.**
 
@@ -95,3 +100,22 @@ You put MuditaOS back with Mudita's official update package, a file named like
 
 6. **Restart.** When the install finishes, choose **Reboot system now**.
    MuditaOS asks for a factory reset first: do it, and MuditaOS starts.
+
+</TabItem>
+<TabItem value="restore" label="Restore your mtkclient backup">
+
+Puts the phone back exactly as it was when you made the
+[backup with mtkclient](/prepare/mtkclient).
+
+1. Start the mtkclient window (`mtk_gui`).
+2. Turn off the phone and unplug it.
+3. Hold **Volume-Up and Volume-Down** while you plug in USB. Keep holding until
+   mtkclient shows the phone.
+4. **Write partition(s)** tab: restore the partitions from your backup folder.
+
+- Never write back `seccfg` or `preloader`.
+- More in mtkclient's
+  [usage guide](https://github.com/bkerler/mtkclient/blob/main/README-USAGE.md).
+
+</TabItem>
+</Tabs>

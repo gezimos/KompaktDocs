@@ -172,3 +172,47 @@
 .markdown details.alert > summary {
   font-weight: var(--ifm-font-weight-semibold);
 }
+
+/* Announcement bar above the navbar: the page background in both themes. */
+div[class*='announcementBar'] {
+  background-color: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+}
+
+div[class*='announcementBar'] a {
+  color: var(--ifm-link-color);
+  font-weight: var(--ifm-font-weight-semibold);
+}
+
+/* Admonitions (:::note, :::warning...): the site's greys and ink, not Docusaurus's colours. */
+.theme-admonition.alert {
+  --ifm-alert-background-color: var(--ifm-background-surface-color);
+  --ifm-alert-background-color-highlight: rgba(0, 0, 0, 0.05);
+  --ifm-alert-foreground-color: var(--ifm-font-color-base);
+  --ifm-alert-border-color: var(--ifm-font-color-base);
+  box-shadow: none;
+}
+
+/* Infima's .alert sets the link colour to the text colour; put the site's back. */
+[data-theme='light'] .theme-admonition.alert {
+  --ifm-link-color: #0b57d0;
+  --ifm-link-hover-color: #0842a0;
+}
+
+[data-theme='dark'] .theme-admonition.alert {
+  --ifm-link-color: #ffdd00;
+  --ifm-link-hover-color: #ffe866;
+}
+
+.theme-admonition.alert a:not(.button) {
+  color: var(--ifm-link-color);
+  text-decoration: underline;
+}
+
+.theme-admonition.alert a:not(.button):hover {
+  color: var(--ifm-link-hover-color);
+}
+
+.theme-admonition.alert a.button {
+  text-decoration: none;
+}

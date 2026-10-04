@@ -5,32 +5,58 @@ title: Install
 import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
+import Link from '@docusaurus/Link';
 
 # Install
 
-1. Put our recovery on the phone. Only once.
-2. Format data, if you are coming from MuditaOS or another system.
-3. Install the update package from the recovery.
+:::note[Haven't read the Requirements yet? Read them first]
 
-## What you need
+<Link className="button button--primary" to="/prepare/requirements">Requirements</Link>
 
-- An unlocked bootloader: see [Unlocking](/prepare/unlocking).
-- [`KompaktOS-Kernel-LineageOS-Recovery-1.0.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.0/KompaktOS-Kernel-LineageOS-Recovery-1.0.img): our kernel and recovery.
-- One update package, for your phone and edition:
+:::
+
+## Back up first
+
+- **Your data:** copy your photos, files and anything else you want to keep to
+  a computer.
+- **The whole phone, once:** make a full backup with
+  [mtkclient](/prepare/mtkclient). If anything ever goes wrong, it puts the
+  phone back as it was.
+
+## Steps
+
+1. Flash recovery (first install only).
+2. Factory reset / format data.
+3. Install the zip package from the recovery.
+
+## Download recovery
+
+The same file for every phone.
+
+| | Recovery |
+|---|---|
+| All phones | [`KompaktOS-Kernel-LineageOS-Recovery-1.0.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.0/KompaktOS-Kernel-LineageOS-Recovery-1.0.img) |
+
+## Download LineageOS zip
+
+Pick one: your phone's row, with or without Google apps.
 
 | | GApps | Vanilla |
 |---|---|---|
 | Global | [`KompaktOS-1.1-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-Global-GApps.zip) | [`KompaktOS-1.1-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-Global-Vanilla.zip) |
 | North American | [`KompaktOS-1.1-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-USA-GApps.zip) | [`KompaktOS-1.1-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-USA-Vanilla.zip) |
 
-Not sure which phone you have? See
-[Editions](/install/editions#global-and-north-american-phones).
+:::warning[Global or North American? Check before you download]
+
+<Link className="button button--primary" to="/install/editions#global-and-north-american-phones">Not sure which phone you have? See Editions</Link>
+
+:::
 
 The md5 of every file is on its release page:
 [KompaktOS 1.1](https://github.com/gezimos/KompaktOS/releases/tag/v1.1) and
 [the recovery](https://github.com/gezimos/KompaktDevice/releases/tag/v1.0).
 
-## 1. Put the recovery on the phone
+## 1. Flash recovery
 
 <Tabs groupId="start">
 <TabItem value="bootloader" label="Already in the bootloader">
@@ -69,15 +95,22 @@ fastboot reboot recovery
 LineageOS recovery works both by touch and with the buttons: Volume-Up and
 Volume-Down to move, Power to select.
 
-## 2. Coming from another system: format data
+## 2. Factory reset / format data
 
-In the recovery: **Factory reset** → **Format data/factory reset**.
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-select-factory-reset.svg" caption="Tap Factory reset." />
+  <Screenshot src="/img/screens/lineage-recovery-factory-reset.svg" caption="Then Format data/factory reset." />
+  <Screenshot src="/img/screens/lineage-recovery-format-confirm.svg" caption="Confirm with Format data." />
+</ScreenshotRow>
 
-- **Erases everything on the phone.** Back up first: see [Backup](/features/backup).
-- Skip it if the phone already runs KompaktOS.
-- Forgot? Do it after step 3, before restarting.
+1. In the recovery, tap **Factory reset**.
+2. Tap **Format data/factory reset**.
+3. Tap **Format data** to confirm.
 
-## 3. Install the package
+If setup later asks for your old PIN or pattern: see
+[Erase FRP](/install/erase-frp).
+
+## 3. Install the zip package
 
 <ScreenshotRow>
   <Screenshot src="/img/screens/lineage-recovery-select-apply.svg" caption="Tap Apply update." />
@@ -109,11 +142,14 @@ When it finishes, it asks whether to reboot to recovery to install more
 packages. Choose **No**, then **Reboot system now**.
 
 <Screenshot src="/img/screens/lineage-recovery-reboot-prompt.svg" caption="Choose No, then Reboot system now." />
-
-The phone now runs from the other slot, A or B. That is normal: see
-[Slots A and B](/develop/understanding-android#slots-a-and-b).
-
 ## The first start
+
+The phone shows the KompaktOS boot screen, then the boot animation.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/boot-screen.jpg" caption="The boot screen." />
+  <Screenshot src="/img/screens/boot-animation.gif" caption="The boot animation." />
+</ScreenshotRow>
 
 The first start takes several minutes, and the phone can feel slow for a while
 after: see [The first start](/install/post-install#the-first-start).

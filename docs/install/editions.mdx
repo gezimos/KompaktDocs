@@ -49,8 +49,8 @@ adb shell getprop gsm.version.baseband
 
 | It says | Your phone | Take |
 |---|---|---|
-| `MOLY.LR12A.R3.MP.V236.P8` | Global | the files without `usa` |
-| `MOLY.LR12A.R3.MP.V236.P6` | North American | the files with `usa` |
+| `MOLY.LR12A.R3.MP.V236.P8` | Global | the `Global` files |
+| `MOLY.LR12A.R3.MP.V236.P6` | North American | the `USA` files |
 
 **Use the one that matches.** With the other region's vendor the phone still
 works and has mobile data, but calls over 4G never connect. In North America,
@@ -69,7 +69,5 @@ The recovery, [`KompaktOS-Kernel-LineageOS-Recovery-1.0.img`](https://github.com
 
 ## Switching between them
 
-Install the other edition's package from the recovery, with **Format
-data/factory reset** first, as for a first install. Keeping your data across a
-switch is not supported: Google Play services landing on data set up without them, or
-disappearing from under apps that used them, tends to leave apps crashing.
+1. In the recovery, **Factory reset** → **Format data/factory reset**.
+2. Install the other edition's zip package.

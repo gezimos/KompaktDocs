@@ -69,6 +69,12 @@ const config: Config = {
     colorMode: {
       respectPrefersColorScheme: true,
     },
+    announcementBar: {
+      id: 'release-1-1',
+      content:
+        '<b>KompaktOS 1.1</b>, Before you start installation read <a href="/prepare/requirements">Requirements</a> &amp; <a href="/prepare/mtkclient">Backup</a>',
+      isCloseable: false,
+    },
     navbar: {
       logo: {
         alt: 'KompaktOS',
