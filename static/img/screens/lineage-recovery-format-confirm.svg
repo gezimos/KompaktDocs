@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 800" width="480" height="800" role="img" aria-label="LineageOS recovery, confirm format data, Format data selected">
+  <rect width="480" height="800" fill="#ffffff"/>
+  <rect x="116" y="22" width="248" height="84" rx="42" fill="none" stroke="#000" stroke-width="2"/>
+  <rect x="152" y="50" width="26" height="26" transform="rotate(45 165 63)" fill="#000"/>
+  <text x="165" y="68" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="13" font-weight="bold" fill="#fff" text-anchor="middle">R</text>
+  <line x1="214" y1="64" x2="228" y2="64" stroke="#000" stroke-width="2"/>
+  <line x1="252" y1="64" x2="266" y2="64" stroke="#000" stroke-width="2"/>
+  <circle cx="208" cy="64" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <circle cx="240" cy="64" r="12" fill="none" stroke="#000" stroke-width="2"/>
+  <circle cx="240" cy="64" r="5" fill="#000"/>
+  <circle cx="272" cy="64" r="6" fill="none" stroke="#000" stroke-width="2"/>
+  <path d="M315 48 L331 76 L299 76 Z" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
+  <text x="315" y="72" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">F</text>
+  <text x="240" y="130" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="14" font-weight="bold" letter-spacing="4" fill="#000" text-anchor="middle">RECOVERY</text>
+  <text x="30" y="166" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Version 23.2 (20260927)</text>
+  <text x="30" y="194" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Product name - Kompakt</text>
+  <text x="30" y="222" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Active slot: a</text>
+  <text x="420" y="166" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="end">90%</text>
+  <rect x="428" y="150" width="12" height="20" fill="#000"/>
+  <rect x="431" y="146" width="6" height="4" fill="#000"/>
+  <text x="30" y="250" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="15" font-weight="normal" fill="#000" text-anchor="start">Format data/factory reset</text>
+  <text x="34" y="300" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">Cancel</text>
+  <rect x="20" y="324" width="440" height="44" fill="none" stroke="#000" stroke-width="3"/>
+  <text x="34" y="352" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">Format data</text>
+</svg>

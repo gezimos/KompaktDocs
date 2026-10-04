@@ -1,0 +1,27 @@
+---
+title: Erase FRP
+---
+
+# Erase FRP
+
+Even after a factory reset, setup asks for the PIN or pattern the phone had
+before, or setting a new PIN fails with "Screen lock was already changed".
+
+- That is Factory Reset Protection (FRP).
+- The old screen lock is kept in its own partition, `frp`. A factory reset or
+  format data does not touch it.
+- It only happens if the phone had a PIN or pattern before the reset.
+
+## Steps
+
+With the phone connected by USB:
+
+```
+adb reboot bootloader
+fastboot erase frp
+fastboot reboot
+```
+
+- No adb? Hold **Power and Volume-Up** and pick **Fastboot Mode**, then run the
+  last two commands.
+- Erasing `frp` only removes the old lock. Your files and apps are not touched.

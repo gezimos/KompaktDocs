@@ -8,7 +8,7 @@ import TabItem from '@theme/TabItem';
 # Unlocking the bootloader
 
 KompaktOS needs an unlocked bootloader. A backup with
-[mtkclient](/prepare/mtkclient) first is optional, but recommended.
+[mtkclient](/prepare/mtkclient) first is recommended.
 
 ## 1. Install ADB
 
@@ -95,7 +95,7 @@ fastboot getvar unlocked
 
 - It should answer `unlocked: yes`.
 - The phone stays in the bootloader: go straight to
-  [Install, step 1](/install/install-kompaktos#1-put-the-recovery-on-the-phone)
+  [Install, step 1](/install/install-kompaktos#1-flash-recovery)
   and use the **Already in the bootloader** tab.
 
 **Relocking is only possible with MuditaOS-K installed, do not try to relock

@@ -23,6 +23,7 @@ const sidebars: SidebarsConfig = {
         'install/post-install',
         'install/updates',
         'install/going-back',
+        'install/erase-frp',
         'install/troubleshooting',
       ],
     },

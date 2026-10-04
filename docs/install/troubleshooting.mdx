@@ -5,36 +5,15 @@ title: Troubleshooting
 
 # Troubleshooting
 
-## Calls end as soon as they start
+## VoLTE or Wi-Fi calling issues
 
-The phone has signal and mobile data, but every call ends straight away, and
-Kompakt app → **Diagnostics** → **Calls over 4G** shows **Registered** No.
+See [Post install](/install/post-install#calls-over-4g-volte).
 
-1. Check the phone's region:
+## Slow, no network in apps, or crashes
 
-   ```
-   adb shell getprop gsm.version.baseband
-   ```
-
-   If it ends in `V236.P6`, the phone is North American and needs the `usa`
-   update package. Install it over what you have, from the recovery; no wipe is
-   needed.
-2. Make sure the IMS app is installed and the phone restarted since:
-   [Calls over 4G](/install/post-install#calls-over-4g-volte).
-
-## Slow, apps without network, or the download manager crashes
-
-After installing over MuditaOS, or another LineageOS build, without formatting
-data. The old system's data is still there:
-
-- After MuditaOS, every app starts with its network access switched off, and
-  the download manager crashes on MuditaOS's newer database.
-- After an older LineageOS build, such as Android 13, KompaktOS starts but runs
-  very slowly.
-
-Back up what you need, then in the recovery: **Factory reset** → **Format
-data/factory reset**, and install the package again. See
-[Install](/install/install-kompaktos#2-coming-from-another-system-format-data).
+You installed without formatting data. Do
+[Factory reset / format data](/install/install-kompaktos#2-factory-reset--format-data),
+then install the zip package again.
 
 ## The install stops with an error
 
@@ -51,18 +30,8 @@ If it does not match, download the file again.
 
 ## "Verify your PIN" after formatting data
 
-Setup asks for the screen lock the phone had before, or setting a new PIN fails
-with "Screen lock was already changed". That is Factory Reset Protection: the
-old lock is kept in a separate partition, `frp`, which formatting data does not
-touch. It only happens if the phone had a PIN or pattern before.
-
-Erase it **from the bootloader** (fastbootd cannot reach it):
-
-```
-adb reboot bootloader
-fastboot erase frp
-fastboot reboot
-```
+Setup asks for the old PIN or pattern, or a new PIN will not set: see
+[Erase FRP](/install/erase-frp).
 
 ## Messages that are not errors
 
