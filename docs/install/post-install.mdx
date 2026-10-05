@@ -2,6 +2,7 @@
 title: Post install
 ---
 
+import Link from '@docusaurus/Link';
 import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 
 # Post install
@@ -95,15 +96,9 @@ set it up once.
 
 </details>
 
-### Still no calls? Check the IMS APN
+For most carriers this is all. Calls still do not work?
 
-1. Calls over 4G need an `ims` access point name for your carrier. KompaktOS
-   includes one for most carriers; if yours is missing, tap **Create IMS APN**
-   in **IMS features**. A message confirms it was added.
-2. Restart the phone.
-3. Still not working: ask your carrier for their APN settings, including the `ims` APN,
-   and add them in Settings → **Network & internet** → **SIMs** → your SIM →
-   **Access Point Names**.
+<Link className="button button--primary" to="/install/troubleshooting#calls-over-4g-do-not-work">See IMS Troubleshooting</Link>
 
 ## Wi-Fi calling
 
