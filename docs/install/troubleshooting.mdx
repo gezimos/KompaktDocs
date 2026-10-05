@@ -3,11 +3,52 @@ sidebar_position: 6
 title: Troubleshooting
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # Troubleshooting
 
-## VoLTE or Wi-Fi calling issues
+## Calls over 4G do not work
 
-See [Post install](/install/post-install#calls-over-4g-volte).
+:::warning[Last resort]
+
+KompaktOS sets up the IMS APN by itself for most carriers. Add PHH IMS only if
+calls over 4G still fail after every step in
+[Calls over 4G](/install/post-install#calls-over-4g-volte).
+
+:::
+
+<Tabs groupId="phh-ims">
+<TabItem value="add" label="Add PHH IMS" default>
+
+1. Settings → **System** → **TrebleDroid Settings** → **IMS features** → tap
+   **Create IMS APN**.
+2. Restart the phone and try a call.
+
+Still no calls: ask your carrier for their APN settings.
+
+</TabItem>
+<TabItem value="delete" label="Delete PHH IMS">
+
+Calls and data stopped after you added it: your carrier already had its own
+IMS APN. Remove PHH IMS:
+
+1. On the computer:
+
+   ```
+   adb shell
+   ```
+
+2. Then:
+
+   ```
+   content delete --uri content://telephony/carriers --where "name='PHH IMS'"
+   ```
+
+3. Type `exit` and restart the phone.
+
+</TabItem>
+</Tabs>
 
 ## Slow, no network in apps, or crashes
 
