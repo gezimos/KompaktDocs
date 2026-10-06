@@ -140,7 +140,7 @@ Do this after setting up the phone. You need [adb](/prepare/unlocking#1-install-
 
    ```
    adb root
-   adb shell 'sqlite3 /data/data/com.google.android.gsf/databases/gservices.db "select * from main where name = \"android_id\";"'
+   adb shell 'sqlite3 /data/user/$(cmd activity get-current-user)/*/*/gservices.db "select * from main where name = \"android_id\";"'
    ```
 
    It prints `android_id|` and a long number. That number is your ID.
