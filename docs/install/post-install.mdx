@@ -4,6 +4,8 @@ title: Post install
 
 import Link from '@docusaurus/Link';
 import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
 
 # Post install
 
@@ -136,25 +138,66 @@ Do this after setting up the phone. You need [adb](/prepare/unlocking#1-install-
 
 1. Settings → System → Developer options → turn on **Rooted debugging**
    (with **USB debugging** on).
-2. Read your device ID:
+2. Read your device ID. There are two ways: pick a tab, **Google's command**
+   or **Any computer**.
 
-   ```
-   adb root
-   adb shell 'sqlite3 /data/user/$(cmd activity get-current-user)/*/*/gservices.db "select * from main where name = \"android_id\";"'
-   ```
+<Tabs groupId="device-id">
+<TabItem value="google" label="Google's command (macOS, Linux)">
 
-   It prints `android_id|` and a long number. That number is your ID.
+As shown on [google.com/android/uncertified](https://www.google.com/android/uncertified/):
+
+```
+adb root
+adb shell 'sqlite3 /data/user/$(cmd activity get-current-user)/*/*/gservices.db \
+    "select * from main where name = \"android_id\";"'
+```
+
+- **It prints `android_id|` and a long number.** The number is your ID.
+- **macOS or Linux only.** Windows Command Prompt and PowerShell do not read the
+  single quotes.
+- **Copy it exactly.** Forums and chat apps often drop the `*`, and then it
+  fails with "no such table".
+
+</TabItem>
+<TabItem value="kompakt" label="Any computer">
+
+On the computer:
+
+```
+adb root
+adb shell
+```
+
+Then in the phone shell that opens:
+
+```
+sqlite3 $(find /data/user/$(cmd activity get-current-user) -mindepth 3 -maxdepth 3 -name gservices.db | head -1) "select value from main where name='android_id';"
+exit
+```
+
+- **It prints a long number.** That number is your ID.
+- **Windows, macOS and Linux work the same way.** The line runs on the phone,
+  not on your computer.
+- **It has no `*` in it,** so nothing gets lost when it is copied.
+
+</TabItem>
+</Tabs>
+
+- **"Permission denied" or "unable to open database":** Rooted debugging is off,
+  or `adb root` was not run first.
+
 3. Open [google.com/android/uncertified](https://www.google.com/android/uncertified/),
    sign in with the Google account you use on the phone, and paste the number.
 4. Restart the phone.
 5. **Only if the popup is still there:** make the phone check again, then
-   restart once more.
+   restart once more. Open a shell on the phone (`adb root`, then `adb shell`)
+   and run:
 
    ```
-   adb root
-   adb shell am broadcast -a android.server.checkin.CHECKIN
-   adb shell rm -f /data/data/com.google.android.gms/files/gmscompliance/shared/cache.pb
-   adb shell 'rm -rf /data/data/com.android.vending/cache/*'
+   am broadcast -a android.server.checkin.CHECKIN
+   rm -f /data/data/com.google.android.gms/files/gmscompliance/shared/cache.pb
+   rm -rf /data/data/com.android.vending/cache
+   exit
    ```
 
 6. Turn **Rooted debugging** off again.
