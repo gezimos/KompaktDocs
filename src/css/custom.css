@@ -193,6 +193,17 @@ div[class*='announcementBar'] a {
   box-shadow: none;
 }
 
+/* Danger is the one that must stand out: red border and a red tint. */
+[data-theme='light'] .theme-admonition-danger.alert {
+  --ifm-alert-border-color: #c62828;
+  --ifm-alert-background-color: #ffffff;
+}
+
+[data-theme='dark'] .theme-admonition-danger.alert {
+  --ifm-alert-border-color: #ff6b6b;
+  --ifm-alert-background-color: rgba(255, 107, 107, 0.12);
+}
+
 /* Infima's .alert sets the link colour to the text colour; put the site's back. */
 [data-theme='light'] .theme-admonition.alert {
   --ifm-link-color: #0b57d0;
