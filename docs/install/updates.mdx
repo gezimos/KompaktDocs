@@ -96,3 +96,16 @@ log and power off.
   <Screenshot src="/img/screens/lineage-recovery-advanced.svg" caption="Advanced." />
   <Screenshot src="/img/screens/lineage-fastbootd.svg" caption="fastbootd, from Enter fastboot." />
 </ScreenshotRow>
+
+## After an update
+
+- **Apps you installed can feel slower for a day.** An update makes Android
+  recompile them, and it does that when the phone is idle and charging,
+  usually the first night.
+- **Optional: recompile them now.** With the phone charging, on the computer:
+
+  ```
+  adb shell pm art dexopt-packages -r bg-dexopt
+  ```
+
+  It takes a few minutes; the command returns when it is done.
