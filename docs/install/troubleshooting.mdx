@@ -56,6 +56,24 @@ You installed without formatting data. Do
 [Factory reset / format data](/install/install-kompaktos#2-factory-reset--format-data),
 then install the zip package again.
 
+## fastboot lists no device
+
+`fastboot devices` prints nothing while the phone is in the bootloader.
+
+- **Try another cable.** A cable can work for adb and still fail in fastboot.
+- **On a Mac, allow the accessory.** The bootloader shows up as a new USB device,
+  so macOS asks again whether to allow it to connect.
+- **On Windows, install Google's USB driver.** Windows has no driver for the
+  bootloader, so `fastboot devices` lists nothing even when adb works.
+  1. Download the [Google USB Driver](https://developer.android.com/studio/run/win-usb)
+     and extract the zip.
+  2. With the phone in the bootloader, open **Device Manager**. The phone is
+     listed with a warning icon, as **Android** or under **Other devices**.
+  3. Right-click it → **Update driver** → **Browse my computer for drivers** →
+     pick the extracted `usb_driver` folder → Next.
+  4. It installs as **Android Bootloader Interface**. Run `fastboot devices`
+     again.
+
 ## The install stops with an error
 
 The download may be incomplete. Every release lists the md5 of each file;

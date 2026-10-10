@@ -31,6 +31,8 @@ brew install --cask android-platform-tools
    [Google's platform-tools page](https://developer.android.com/tools/releases/platform-tools).
 2. Extract it and open the `platform-tools` folder.
 3. Click the folder's address bar, type `cmd` and press Enter.
+4. If fastboot sees nothing, follow
+   [the guide at the end](#if-fastboot-sees-nothing).
 
 Run the commands in that window.
 
@@ -103,7 +105,19 @@ LineageOS.**
 
 ## If fastboot sees nothing
 
+- **Check with `fastboot devices`, not `adb devices`.** adb does not run in the
+  bootloader, so `adb devices` shows nothing there even when all is well.
 - **Try another cable.** A cable can work for adb and still fail in fastboot.
   If `fastboot devices` lists nothing, suspect the cable first.
 - **On a Mac, allow the accessory.** The bootloader shows up as a new USB device,
   so macOS asks again whether to allow it to connect.
+- **On Windows, install Google's USB driver.** Windows has no driver for the
+  bootloader, so `fastboot devices` lists nothing even when adb works.
+  1. Download the [Google USB Driver](https://developer.android.com/studio/run/win-usb)
+     and extract the zip.
+  2. With the phone in the bootloader, open **Device Manager**. The phone is
+     listed with a warning icon, as **Android** or under **Other devices**.
+  3. Right-click it → **Update driver** → **Browse my computer for drivers** →
+     pick the extracted `usb_driver` folder → Next.
+  4. It installs as **Android Bootloader Interface**. Run `fastboot devices`
+     again.
