@@ -41,11 +41,16 @@ The Kompakt is sold in two versions, Global and North American (USA), and they
 run different modem firmware. Our vendor image comes in two matching versions.
 The system image is the same for both.
 
-Check which one you have:
+Check which one you have, with MuditaOS updated to 1.6.1:
 
 ```
 adb shell getprop gsm.version.baseband
 ```
+
+Or in Settings, under About phone: Baseband version.
+
+- Check on MuditaOS 1.6.1, not on an older version: Global phones on MuditaOS
+  1.4.0 or older also show `P6`.
 
 | It says | Your phone | Take |
 |---|---|---|

@@ -9,12 +9,14 @@ title: Requirements
   [Install ADB](/prepare/unlocking#1-install-adb).
 - **An unlocked bootloader:** see [Unlocking](/prepare/unlocking).
 - **A backup:** installing erases the phone. See [Backup with mtkclient](/prepare/mtkclient).
-- **Know which phone you have, Global or North American:** see
-  [Editions](/install/editions#global-and-north-american-phones).
+- **MuditaOS 1.6.1:** update MuditaOS to 1.6.1 before installing.
+- **Your modem version, checked on MuditaOS 1.6.1:**
+  - With adb: `adb shell getprop gsm.version.baseband`
+  - Or in Settings, under About phone: Baseband version.
+  - `V236.P8` is a Global phone, `V236.P6` a North American one. See
+    [Editions](/install/editions#global-and-north-american-phones).
 - **The files for your phone and edition:** see
   [Install](/install/install-kompaktos#download-recovery).
-- **No downgrade needed:** whatever MuditaOS version you are on, you install
-  KompaktOS directly.
 
 **Relocking is only possible with MuditaOS-K installed. Do not try to relock
 with KompaktOS.**
