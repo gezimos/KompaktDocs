@@ -1,0 +1,180 @@
+---
+title: E-ink experiments
+unlisted: true
+---
+
+export const Example = ({src, caption}) => (
+  <figure style={{margin: '1rem 0', maxWidth: 480, flex: '1 1 300px'}}>
+    <img src={src} alt={caption} style={{display: 'block', width: '100%', height: 'auto', imageRendering: 'pixelated', border: '1px solid var(--ifm-color-emphasis-300)'}} />
+    <figcaption style={{marginTop: '0.4rem', fontSize: '0.82rem', lineHeight: 1.35, opacity: 0.8}}>{caption}</figcaption>
+  </figure>
+);
+
+export const Examples = ({children}) => (
+  <div style={{display: 'flex', flexWrap: 'wrap', gap: '1.25rem', alignItems: 'flex-start'}}>{children}</div>
+);
+
+# E-ink experiments
+
+These are test settings for the e-ink screen. They are not in the Kompakt app
+yet: you turn them on with one adb command each, try them, and tell us what you
+see. The ones that work well become real settings later.
+
+## Before you start
+
+- You need the latest **KompaktOS 1.2 test build** and a computer with **adb**
+  connected to the phone.
+- **Nothing here is permanent.** A restart puts every setting back to normal.
+- Each setting only changes some modes. Pick that mode first in the **Kompakt
+  app → Display**.
+- Try one setting at a time, so you know which one made the difference.
+- If the screen looks wrong, restart the phone or paste the reset command below.
+
+### Reset everything
+
+```
+adb shell "echo 0 > /sys/einkinfo/kompakt_wf_a2frames; echo 0 > /sys/einkinfo/kompakt_wf_gu16; echo 0 > /sys/einkinfo/kompakt_wf_du4; echo 0 > /sys/einkinfo/kompakt_wf_a2grey; echo 24 > /sys/module/meink_hal/parameters/partial_full_every; echo 0 > /sys/einkinfo/kompakt_wf_dither; echo 48 208 > /sys/einkinfo/kompakt_wf_dither_cut; echo 8 > /sys/einkinfo/kompakt_wf_dither_step"
+```
+
+## Faster Fast
+
+**Use with:** Fast or Fast + dither.
+
+Fast normally drives each change in 7 steps. Fewer steps means a quicker screen,
+but more traces left behind and weaker blacks.
+
+| Command | Steps | What we found |
+| --- | --- | --- |
+| `adb shell "echo 5 > /sys/einkinfo/kompakt_wf_a2frames"` | 5 | Noticeably faster, a bit more ghosting. The best one so far |
+| `adb shell "echo 4 > /sys/einkinfo/kompakt_wf_a2frames"` | 4 | Very fast, but not enough contrast |
+| `adb shell "echo 3 > /sys/einkinfo/kompakt_wf_a2frames"` | 3 | Very fast, washed out, heavy ghosting |
+| `adb shell "echo 2 > /sys/einkinfo/kompakt_wf_a2frames"` | 2 | The fastest possible. Not tested yet; expect a faint picture and heavy ghosting. Try it briefly, not as an everyday setting |
+
+- **Look for:** how fast scrolling feels, how much of the last screen stays
+  behind, and whether black text stays black.
+- **4 steps with more cleaning:** the same speed, with the whole screen cleaned
+  twice as often, so fewer traces collect. You see a full clean more often.
+  ```
+  adb shell "echo 4 > /sys/einkinfo/kompakt_wf_a2frames; echo 12 > /sys/module/meink_hal/parameters/partial_full_every"
+  ```
+- **Turn off:**
+  ```
+  adb shell "echo 0 > /sys/einkinfo/kompakt_wf_a2frames; echo 24 > /sys/module/meink_hal/parameters/partial_full_every"
+  ```
+
+## Fast with 4 greys
+
+**Use with:** any mode; the command switches the screen itself.
+
+A fast mode with four shades instead of two: black, dark grey, light grey and
+white. It takes about twice as long as Fast and half as long as Quality, so
+photos, icons and grey buttons keep their shading while you scroll.
+
+```
+adb shell "echo 1 > /sys/einkinfo/kompakt_wf_du4; echo 0 > /sys/einkinfo/dither_type; echo DU2 > /sys/einkinfo/waveform_mode"
+```
+
+- **Look for:** whether you see four clear shades, how fast scrolling feels,
+  and how much of the last screen stays behind.
+- The first switch into it can flash black and white once.
+- Opening another app can switch the screen back to that app's mode. Test
+  inside one app, or run the command again.
+- Needs the latest test build.
+- **Turn off:** pick any mode in the Kompakt app, then
+  ```
+  adb shell "echo 0 > /sys/einkinfo/kompakt_wf_du4"
+  ```
+
+## Faster Quality
+
+**Use with:** Quality mode.
+
+Quality redraws the page more quickly, and the whole-screen clean happens half
+as often. In our testing it is clearly better than the normal Quality mode, and
+the best setting we have found for reading.
+
+```
+adb shell "echo 1 > /sys/einkinfo/kompakt_wf_gu16; echo 48 > /sys/module/meink_hal/parameters/partial_full_every"
+```
+
+- **Look for:** faint traces of earlier pages building up over a long read.
+- **If traces build up**, clean more often:
+  ```
+  adb shell "echo 24 > /sys/module/meink_hal/parameters/partial_full_every"
+  ```
+- **Turn off:**
+  ```
+  adb shell "echo 0 > /sys/einkinfo/kompakt_wf_gu16; echo 24 > /sys/module/meink_hal/parameters/partial_full_every"
+  ```
+
+## Dither patterns
+
+**Use with:** Fast + dither, or Auto while the screen moves.
+
+Fast + dither turns greys into black and white dots. These settings change how
+the dots are placed.
+
+| Command | Pattern | What it looks like |
+| --- | --- | --- |
+| `adb shell "echo 0 > /sys/einkinfo/kompakt_wf_dither"` | Normal | Random-looking dots that crawl when the picture moves |
+| `adb shell "echo 1 > /sys/einkinfo/kompakt_wf_dither"` | Pattern | A fine, regular grid of dots that stays still. Better than Coarse so far |
+| `adb shell "echo 2 > /sys/einkinfo/kompakt_wf_dither"` | Coarse pattern | The same idea with a larger grid |
+| `adb shell "echo 3 > /sys/einkinfo/kompakt_wf_dither"` | Mixed | Normal dots guided by the grid: more detail than Pattern, steadier than Normal |
+
+- **Look for:** photos, grey buttons and icons, and whether text stays sharp.
+- Only use **3** on the latest test build. On older builds it restarts the
+  phone.
+
+### What each pattern looks like
+
+The same test picture through each pattern, shown at twice the size so the dots
+are visible. It has a grey ramp, a shaded ball, a dark and a light grey button,
+a black line and a mid grey line.
+
+<Example src="/img/eink/dither-original.png" caption="The picture before dithering, in real greys." />
+
+<Examples>
+  <Example src="/img/eink/dither-0-normal.png" caption="0 Normal: random dots everywhere, even on the light grey card, and the mid grey line breaks up." />
+  <Example src="/img/eink/dither-1-pattern.png" caption="1 Pattern: an even grid of dots. The light card is clean white and the black line stays solid." />
+</Examples>
+
+<Examples>
+  <Example src="/img/eink/dither-2-coarse.png" caption="2 Coarse pattern: the same grid, larger, with fewer shades in the ramp and the ball." />
+  <Example src="/img/eink/dither-3-mixed.png" caption="3 Mixed: grid-guided dots with more shades, a smoother ball and ramp than Pattern." />
+</Examples>
+
+### How much grid in Mixed
+
+Only for pattern **3**. Lower numbers look more like Normal, higher like Pattern.
+
+```
+adb shell "echo 4 > /sys/einkinfo/kompakt_wf_dither_step"
+adb shell "echo 8 > /sys/einkinfo/kompakt_wf_dither_step"
+adb shell "echo 16 > /sys/einkinfo/kompakt_wf_dither_step"
+```
+
+- **8** is the default. The range is 0 to 32.
+
+### Clean whites and blacks
+
+For patterns **1**, **2** and **3**. Very light greys become plain white and
+very dark greys plain black, so backgrounds and text get no dots.
+
+```
+adb shell "echo 48 208 > /sys/einkinfo/kompakt_wf_dither_cut"
+```
+
+- The first number is the black limit and the second the white limit, from 0
+  (black) to 255 (white). The default is **48 208**.
+- **More solid black:** raise the first number, for example `64 208`.
+- **More clean white:** lower the second number, for example `48 192`.
+
+## Check what is set
+
+```
+adb shell "cat /sys/einkinfo/kompakt_wf_a2frames /sys/einkinfo/kompakt_wf_gu16 /sys/einkinfo/kompakt_wf_dither /sys/einkinfo/kompakt_wf_dither_step /sys/einkinfo/kompakt_wf_dither_cut /sys/module/meink_hal/parameters/partial_full_every"
+```
+
+The lines come out in this order: Fast steps (0 is normal), Faster Quality
+(0 off, 1 on), dither pattern, Mixed grid, white and black
+limits, steps between whole-screen cleans.
