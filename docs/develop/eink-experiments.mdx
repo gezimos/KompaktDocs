@@ -33,7 +33,7 @@ see. The ones that work well become real settings later.
 ### Reset everything
 
 ```
-adb shell "echo 0 > /sys/einkinfo/kompakt_wf_a2frames; echo 0 > /sys/einkinfo/kompakt_wf_gu16; echo 0 > /sys/einkinfo/kompakt_wf_du4; echo 0 > /sys/einkinfo/kompakt_wf_a2grey; echo 24 > /sys/module/meink_hal/parameters/partial_full_every; echo 0 > /sys/einkinfo/kompakt_wf_dither; echo 48 208 > /sys/einkinfo/kompakt_wf_dither_cut; echo 8 > /sys/einkinfo/kompakt_wf_dither_step"
+adb shell "echo 0 > /sys/einkinfo/kompakt_wf_a2frames; echo 0 > /sys/einkinfo/kompakt_wf_gu16; echo 0 > /sys/einkinfo/kompakt_wf_a2grey; echo 24 > /sys/module/meink_hal/parameters/partial_full_every; echo 0 > /sys/einkinfo/kompakt_wf_dither; echo 48 208 > /sys/einkinfo/kompakt_wf_dither_cut; echo 8 > /sys/einkinfo/kompakt_wf_dither_step"
 ```
 
 ## Faster Fast
@@ -60,29 +60,6 @@ but more traces left behind and weaker blacks.
 - **Turn off:**
   ```
   adb shell "echo 0 > /sys/einkinfo/kompakt_wf_a2frames; echo 24 > /sys/module/meink_hal/parameters/partial_full_every"
-  ```
-
-## Fast with 4 greys
-
-**Use with:** any mode; the command switches the screen itself.
-
-A fast mode with four shades instead of two: black, dark grey, light grey and
-white. It takes about twice as long as Fast and half as long as Quality, so
-photos, icons and grey buttons keep their shading while you scroll.
-
-```
-adb shell "echo 1 > /sys/einkinfo/kompakt_wf_du4; echo 0 > /sys/einkinfo/dither_type; echo DU2 > /sys/einkinfo/waveform_mode"
-```
-
-- **Look for:** whether you see four clear shades, how fast scrolling feels,
-  and how much of the last screen stays behind.
-- The first switch into it can flash black and white once.
-- Opening another app can switch the screen back to that app's mode. Test
-  inside one app, or run the command again.
-- Needs the latest test build.
-- **Turn off:** pick any mode in the Kompakt app, then
-  ```
-  adb shell "echo 0 > /sys/einkinfo/kompakt_wf_du4"
   ```
 
 ## Faster Quality
