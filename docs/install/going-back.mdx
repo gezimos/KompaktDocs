@@ -13,8 +13,20 @@ Choose one:
 <Tabs groupId="going-back">
 <TabItem value="ota" label="Mudita's update package" default>
 
-Mudita's official update package, a file named like
-`Kompakt-1.6.0.signed.user-ota.zip`, installed from the phone's recovery.
+Mudita's official update package, installed from the phone's recovery.
+
+You need two files:
+
+- **Mudita's boot image**, which brings back Mudita's recovery:
+  `Mudita-1.6.1-stock-boot.img` from
+  [archive.org](https://archive.org/details/mudita-os-k-stock-boot)
+  ([direct download](https://archive.org/download/mudita-os-k-stock-boot)).
+  The same file works on Global and USA phones.
+- **Mudita's update package** for your phone, Global or USA. Read the
+  README file on that archive.org page to find the links. The Global one is named
+  `Kompakt-1.6.1.signed.user-ota.zip`, the USA one
+  `Kompakt-usa_1.6.1.signed.user-ota.zip`.
+- Use the boot image and the package of the same MuditaOS version.
 
 Had a PIN or pattern on KompaktOS? [Erase FRP](/install/erase-frp) first. Recommended.
 
@@ -43,7 +55,7 @@ Had a PIN or pattern on KompaktOS? [Erase FRP](/install/erase-frp) first. Recomm
    the MuditaOS version you are installing:
 
    ```
-   fastboot flash boot /path/to/mudita_boot.img
+   fastboot flash boot Mudita-1.6.1-stock-boot.img
    ```
 
 3. **Open recovery.**
@@ -81,8 +93,10 @@ Had a PIN or pattern on KompaktOS? [Erase FRP](/install/erase-frp) first. Recomm
    Choose **Apply update from ADB**, then on the computer:
 
    ```
-   adb sideload Kompakt-1.6.0.signed.user-ota.zip
+   adb sideload Kompakt-1.6.1.signed.user-ota.zip
    ```
+
+   On a USA phone, use `Kompakt-usa_1.6.1.signed.user-ota.zip`.
 
    Drag the file onto the terminal to paste its path. Or choose **Apply update
    from SD card** and pick the package from the card.
