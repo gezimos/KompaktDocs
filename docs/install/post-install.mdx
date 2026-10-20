@@ -12,12 +12,11 @@ import TabItem from '@theme/TabItem';
 After installing, in this order:
 
 1. [Wait out the first start](#the-first-start).
-2. Global phones: [check the modem](#global-phones-check-the-modem).
-3. [Choose a launcher](#choose-a-launcher).
-4. [Set up calls over 4G](#calls-over-4g-volte), needed to make calls on most
+2. [Choose a launcher](#choose-a-launcher).
+3. [Set up calls over 4G](#calls-over-4g-volte), needed to make calls on most
    networks.
-5. Optional: [turn on Wi-Fi calling](#wi-fi-calling).
-6. GApps edition: [remove the Play Protect popup](#play-protect-popup-gapps).
+4. Optional: [turn on Wi-Fi calling](#wi-fi-calling).
+5. GApps edition: [remove the Play Protect popup](#play-protect-popup-gapps).
 
 ## The first start
 
@@ -30,24 +29,6 @@ After installing, in this order:
 
 Pattern locks are broken and can lock you out of the phone. Use a PIN or a
 password.
-
-:::
-
-## Global phones: check the modem
-
-:::warning
-
-KompaktOS 1.1 does not install modem firmware. Your phone keeps one modem in
-each of its two slots, and on Global phones one slot can still hold the old
-`P6` modem from MuditaOS 1.4.0 or older. On that modem, calls over 4G might
-not connect.
-
-- Check it: `adb shell getprop gsm.version.baseband`
-- A Global phone should show `V236.P8`.
-- If it shows `V236.P6`, sideload the same package once more. It installs to
-  the other slot, which has the right modem. Apps and data stay.
-- From KompaktOS 1.2, every package installs its own modem, and this step is
-  not needed.
 
 :::
 

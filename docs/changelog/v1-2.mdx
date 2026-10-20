@@ -7,14 +7,15 @@ slug: /changelog/1.2
 
 # KompaktOS 1.2
 
-Not released yet. Everything that changes when you update from 1.1.
+20 October 2026. Everything that changes when you update from 1.1.
 
 Each change has a number. If you have a question about one, mention its
 number, for example "1.2 #14".
 
 ## Calls and mobile network
 
-1. Verizon works: mobile data, texts and calls.
+1. Verizon works: mobile data, texts and calls. If calls still fail after
+   updating, clear the Phone Services app's storage once.
 2. Changes to help with losing mobile network on Verizon, T-Mobile US and
    Orange France.
 3. Orange France uses both IPv4 and IPv6.
@@ -32,183 +33,236 @@ number, for example "1.2 #14".
     with your carrier once an eSIM is on. The Add SIM row that came and went
     is gone.
 11. A new eSIM is turned on as soon as it finishes downloading.
+12. Mobile data reconnects by itself within seconds when the network ends it,
+    also while you are on Wi-Fi, so MMS keeps working. Before, it stayed dead
+    until you turned mobile data off and on.
+13. The modem's power saving works as on MuditaOS: always on, except while
+    you share your connection. Android switched it on and off whenever the
+    screen or the charger changed.
 
 ## Sound
 
-12. The lowest call volume is much quieter, on normal, 4G and Wi-Fi calls. Call
+14. The lowest call volume is much quieter, on normal, 4G and Wi-Fi calls. Call
    volume has 6 steps instead of 5.
-13. 30 media volume steps instead of 15.
-14. The volume panel is back to the older Android design: one outlined slider.
+15. 30 media volume steps instead of 15.
+16. The volume panel is back to the older Android design: one outlined slider.
 
 ## Notifications
 
-15. Tap the arrow on a notification to see its buttons, like **Reply** and
+17. Tap the arrow on a notification to see its buttons, like **Reply** and
     **Mark as read**.
-16. The arrow that opens a notification has an outline, and the send button in
+18. The arrow that opens a notification has an outline, and the send button in
     a reply is solid.
-17. To clear a notification, swipe it. Its border turns dashed as you swipe. Let
+19. To clear a notification, swipe it. Its border turns dashed as you swipe. Let
     go when the whole border is dashed.
-18. Paged scrolling in the notifications. **Clear all** stays at the bottom.
-19. The notifications no longer grow and reorder the first time you open them
+20. Paged scrolling in the notifications. **Clear all** stays at the bottom.
+21. The notifications no longer grow and reorder the first time you open them
     after unlocking.
-20. Notification icons are black and white for apps that have a black and white
+22. Notification icons are black and white for apps that have a black and white
     icon.
-21. No more thin lines above a pop-up notification.
-22. Quick Settings tiles, the brightness slider and Messages bubbles have the
+23. No more thin lines above a pop-up notification.
+24. Quick Settings tiles, the brightness slider and Messages bubbles have the
     same border thickness as notifications.
-23. The "device is not certified" notification from Google Play Services is
+25. The "device is not certified" notification from Google Play Services is
     hidden.
+26. Grouped notifications, like Google's weather, show on the lock screen when
+    they fit.
+27. After you close an opened notification on the lock screen, the
+    notifications stay at the top and **Clear all** stays at the bottom.
+28. When you wake the phone, lock screen notifications appear in place instead
+    of moving up under the clock.
+29. The PIN pad (phone PIN and SIM PIN) responds faster: keys no longer flash
+    black, and each digit appears as a dot straight away.
+30. Swiping up opens the PIN pad whole: the keys no longer show over the lock
+    screen before its white background.
+31. The last notification on the lock screen shows when they all fit. It was
+    hidden, so two or three notifications showed one fewer.
+32. A pop-up notification sits as far from the top of the screen as from the
+    sides.
 
 ## Lock screen and always-on display
 
-24. The always-on clock looks the same as the lock screen clock.
-25. The lock screen clock digits are sharper.
-26. The always-on display updates when a notification arrives or the battery
+33. The always-on clock looks the same as the lock screen clock.
+34. The lock screen clock digits are sharper.
+35. The always-on display updates when a notification arrives or the battery
     changes, not only once a minute.
-27. The lock screen shows only as many notifications as fit, and the last one
+36. The lock screen shows only as many notifications as fit, and the last one
     has round corners.
-28. Bigger unlock patterns (4×4 and up) work.
-29. Lock screen text stays black on light wallpapers.
-30. The big and small clocks switch without fading.
-31. Going back from the PIN pad no longer brings the lock screen back piece by
+37. Bigger unlock patterns (4×4 and up) work.
+38. Lock screen text stays black on light wallpapers.
+39. The big and small clocks switch without fading.
+40. Going back from the PIN pad no longer brings the lock screen back piece by
     piece.
-32. **Warm flashlight.**
+41. With no lock screen, the lock screen clock no longer shows over the home
+    screen for a moment when you wake the phone.
+42. **Warm flashlight.**
     - Add it to the lock screen: Wallpaper & style → Lock screen → Shortcuts.
     - Or turn it on with the power button: Kompakt app → Settings → Power button
       light.
-33. **Prevent accidental wake-up**: Settings → Display. It stops the phone
-    waking up in your pocket. Off unless you turn it on.
-34. The widget button on the lock screen is gone. It did nothing.
-35. Fixed a rare bug where the home screen stopped responding after an unlock.
+43. **Prevent accidental wake-up**: Settings → Display. It stops the phone
+    waking up in your pocket. It is on; turn it off in the same place.
+44. The widget button on the lock screen is gone. It did nothing.
+45. Fixed a rare bug where the home screen stopped responding after an unlock.
 
 ## Screen
 
-36. The screen uses the same default temperature setting as MuditaOS (+11).
+46. The screen uses the same default temperature setting as MuditaOS (+11).
     Phones that had 0 move to +11 once.
-37. Less ghosting on the sleep screen: the screen is cleared every time you lock
+47. Less ghosting on the sleep screen: the screen is cleared every time you lock
     the phone.
-38. Your sleep screen picture shows right after a restart.
-39. A Quick Settings tile for each e-ink mode. Open Quick Settings, tap the
+48. Your sleep screen picture shows right after a restart.
+49. A Quick Settings tile for each e-ink mode. Open Quick Settings, tap the
     pencil, and look under **E-ink modes**.
-40. Paged scrolling in Phone, Contacts, Calendar, Files, Music, Wallpaper &
+50. Paged scrolling in Phone, Contacts, Calendar, Files, Music, Wallpaper &
     style and the rest of Settings.
 
 ## Animations
 
-41. Some animations in the notifications, Quick Settings and Recents still played
+51. Some animations in the notifications, Quick Settings and Recents still played
     with animations off. They no longer do.
-42. The Phone dialpad and the Contacts menu no longer slide in and out.
-43. A tap no longer leaves a grey spot.
-44. The wallpaper no longer zooms when you open the notifications, Recents or an
+52. The Phone dialpad and the Contacts menu no longer slide in and out.
+53. A tap no longer leaves a grey spot.
+54. The wallpaper no longer zooms when you open the notifications, Recents or an
     app.
-45. Going home no longer flashes black.
-46. Recents no longer leaves an app stuck on the home screen.
+55. Going home no longer flashes black.
+56. Recents no longer leaves an app stuck on the home screen.
 
 ## Fonts and emoji
 
-47. Pick a font for the whole phone: Google Sans, Roboto, Manrope, Noto Serif,
-    Source Serif, Lato or JetBrains Mono. Kompakt app → Style → Font.
-48. Emoji are black and white. For colour emoji: Kompakt app → Style → Emoji.
-49. TrebleDroid's **Font family** option is gone. It only changed some screens.
+57. Pick a font for the whole phone: Google Sans, Roboto, Manrope, Noto Serif,
+    Source Serif, Lato or JetBrains Mono. Kompakt app → Style → Font. The
+    clock's width slider (Wallpaper & style → Clock) makes the clock thinner
+    or bolder in every font.
+58. Emoji are black and white. For colour emoji: Kompakt app → Style → Emoji.
+59. TrebleDroid's **Font family** option is gone. It only changed some screens.
 
 ## Status bar and Quick Settings
 
-50. The status bar has smaller side margins, like the lock screen.
-51. The status bar stays still when you open the notifications.
-52. When an app uses the camera or microphone, a small black or white dot shows
+60. The status bar has smaller side margins, like the lock screen.
+61. The status bar stays still when you open the notifications.
+62. When an app uses the camera or microphone, a small black or white dot shows
     in the corner instead of a green icon.
-53. A new battery icon, **Bars**: Settings → System → Status bar → Battery
+63. A new battery icon, **Bars**: Settings → System → Status bar → Battery
     status style.
-54. Hold the Recents key to open Quick Settings, and hold it again to close
+64. Hold the Recents key to open Quick Settings, and hold it again to close
     them. Turn it on in Kompakt app → Settings.
-55. The tile editor has less empty space above and below its title.
+65. The tile editor has less empty space above and below its title, and the
+    e-ink mode tiles have their own group, **E-ink modes**.
 
 ## Settings
 
-56. A search result takes you straight to the setting.
-57. Every page keeps its title at the top.
-58. App icons are black and white for apps that have a black and white icon.
-59. **All apps** scrolls without tapping the search box first.
-60. Battery usage shows how much each app uses.
-61. Battery saver no longer turns on dark mode.
-62. Pop-up windows in apps like Calendar have a border, and permission prompts
+66. A search result takes you straight to the setting.
+67. Every page keeps its title at the top. On the main Settings page, every
+    page of rows starts at the same height, the last one included.
+68. App icons are black and white for apps that have a black and white icon.
+69. **All apps** scrolls without tapping the search box first.
+70. Battery usage shows how much each app uses.
+71. Battery saver no longer turns on dark mode.
+72. Pop-up windows in apps like Calendar have a border, and permission prompts
     are black in dark mode.
-63. Night Light, Extra dim and Lift to wake are gone. They did nothing on this
-    phone.
+73. Night Light, Extra dim, Lift to wake and the Media settings are gone. They
+    did nothing on this phone.
+74. The Lock screen settings no longer show **Widgets on lock screen**, or a
+    **When to show** heading with nothing under it.
+75. The Settings search bar has an outline.
 
 ## Apps
 
-64. The built-in apps open faster, from the first start after the update.
-65. **Katapult** is updated to 1.7.
-66. **inkOS** is updated to the latest 0.7 build.
-67. **Phone**: Mute, Speaker and the other call buttons show when they are on.
+76. The built-in apps open faster, from the first start after the update.
+77. Swiping and scrolling are smoother.
+78. **Katapult** is updated to 1.7.
+79. **inkOS** is updated to the latest 0.7 build.
+80. **Phone**: Mute, Speaker and the other call buttons show when they are on.
     The answer button and the dialpad button have an outline, and the dialpad
     button is a rounded square like the add buttons in Calendar and Messages.
-68. **Contacts**: a contact opens full screen. A contact without a photo shows
+81. **Contacts**: a contact opens full screen. A contact without a photo shows
     a black and white placeholder, and the menu and pop-up windows follow
     light and dark mode. The add button is a rounded square.
-69. **Messages**: the buttons in pop-up windows are visible in light and dark
+82. **Messages**: the buttons in pop-up windows are visible in light and dark
     mode.
-70. **Calendar**:
+83. **Calendar**:
     - Events are black and white, not in colour.
     - Swipe to change the month, week or day.
     - Pop-up windows and the date and time pickers are black or white, not grey.
-71. **Clock**: the alarm screen is readable in light mode, and a paused
+84. **Clock**: the alarm screen is readable in light mode, and a paused
     stopwatch no longer blinks.
-72. **Camera**:
+85. **Camera**:
     - New looks for photos and videos: B&W, Film and VHS.
     - Save to the memory card: Camera settings → Save to SD card.
     - The status bar hides again after a swipe.
     - Paged scrolling in the camera settings, with a fixed title.
-73. **Music**:
+86. **Music**:
     - Redesigned for e-ink: outlined buttons and covers, and a smaller mini
       player.
-    - Tabs change without sliding.
-    - Paged scrolling in the rows of covers on the Activity tab: swipe left or
+    - Albums, Artists, Genres and Playlists are the tabs at the bottom, and
+      change without sliding.
+    - The header shows which page you are on; search and the menu button are
+      on its right.
+    - The mini player sits right above the tabs.
+    - Albums is a list with small covers.
+    - To show album art in black and white: Music → Settings → Dither covers.
+    - Genre pages have a plain header and turn a page per swipe.
+    - The music provider and the Activity page are in Music → Settings.
+    - Paged scrolling in the rows of covers on the Activity page: swipe left or
       right to move a page of covers.
     - Paged scrolling in the Music settings, with a fixed title.
     - No visualizer.
     - To hide the round play buttons: Music → Settings → Floating buttons.
-74. **Files**: outlined files and folders, and the filter chips no longer pile
+    - Coming back to the library shows the page of the selected tab.
+    - Pages change at once, without the old page showing under the new one.
+    - The song that is playing shows its title on the album page.
+87. **Files**: outlined files and folders, and the filter chips no longer pile
     up.
-75. **Gallery**: the selected tab has a pill behind its icon.
-76. **Wallpaper & style**: the lock screen and home screen previews sit side by
-    side.
-77. **Keyboard**: the emoji tabs are easier to read, and a swipe no longer jumps
+88. **Gallery**: the selected tab has a pill behind its icon.
+89. **Wallpaper & style**: the lock screen and home screen previews sit side by
+    side, and tapping the clock preview no longer closes the app. A swipe
+    anywhere on the page turns a page. The Shortcuts page has no previews, and
+    the shortcuts are four to a row.
+90. **Keyboard**: the emoji tabs are easier to read, and a swipe no longer jumps
     to another tab.
-78. **eSIM manager (OpenEUICC)**: the add button matches the other apps, a
+91. **eSIM manager (OpenEUICC)**: the add button matches the other apps, a
     rounded square with a border and no shadow.
 
 ## Kompakt app
 
-79. A new **Style** tab, with Font, Emoji and Display width.
-80. A new fingerprint action, **Brightness on/off**, for a double tap, triple
+92. A new layout with four tabs: Display, Offline, Style and Settings. Style
+    has Font, Emoji and Display width. Temperature offset and Diagnostics are
+    under ⋮ → Advanced.
+93. A new fingerprint action, **Brightness on/off**, for a double tap, triple
     tap or hold: Kompakt app → Settings → Fingerprint sensor.
-81. **Switch mode** on the fingerprint sensor goes through every mode you turned
+94. **Switch mode** on the fingerprint sensor goes through every mode you turned
     on, not only the first two.
-82. The refresh on unlock was often missed, mostly after the always-on
+95. The refresh on unlock was often missed, mostly after the always-on
     display. It now lasts long enough to show.
-83. Security & privacy no longer warns about Per-app e-ink mode.
-84. The app shows the right e-ink mode after you change it from a Quick
+96. Security & privacy no longer warns about Per-app e-ink mode.
+97. The app shows the right e-ink mode after you change it from a Quick
     Settings tile or the fingerprint sensor.
+98. An app with its own e-ink mode, for example a reader in Text, keeps it
+    after you unlock or refresh the screen (long press home). Before, it
+    switched to another mode until you reopened the app.
+99. An app with its own e-ink mode keeps it while the keyboard or a pop-up from
+    another app is open. Before, the keyboard switched the app to the default
+    mode as soon as it appeared.
+100. A tap, double tap, triple tap or hold on the fingerprint sensor counts as
+     using the phone, so the screen no longer turns off in the middle of it.
 
 ## Kernel, vendor and recovery
 
-These come in the same update package as the system. The recovery is
-unchanged.
+These come in the same update package as the system. The recovery itself is
+unchanged; its image is released again as 1.1, with this kernel.
 
-85. The notification light brightness works when the light is set to
-    **Always on**. A blinking light stays at full brightness.
-86. The lowest ringtone and notification volume is quieter.
-87. The battery reports its real capacity, 3037 mAh, so battery health shows
-    100%.
-88. The last app no longer shows through the sleep screen.
+101. The notification light brightness works when the light is set to
+     **Always on**. A blinking light stays at full brightness.
+102. The lowest ringtone and notification volume is quieter.
+103. The battery reports its real capacity, 3037 mAh, so battery health shows
+     100%.
+104. The last app no longer shows through the sleep screen.
+105. **Auto** e-ink mode no longer flashes when you start scrolling.
 
-## Banking apps
+## Unlocked phone check
 
-89. Apps that check whether the phone is locked down, like some banking apps,
-    now see it as locked.
-90. To turn this off: TrebleDroid Settings → Misc → Securize.
+106. Some apps that refuse to run on an unlocked phone might now see a locked one.
+107. To turn this off: TrebleDroid Settings → Misc → **Securize**.
 
 ## After you update from 1.1
 

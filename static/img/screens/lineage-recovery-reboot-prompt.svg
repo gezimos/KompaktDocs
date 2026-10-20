@@ -12,7 +12,7 @@
   <path d="M315 48 L331 76 L299 76 Z" fill="none" stroke="#000" stroke-width="2" stroke-linejoin="round"/>
   <text x="315" y="72" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="12" font-weight="bold" fill="#000" text-anchor="middle">F</text>
   <text x="240" y="130" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="14" font-weight="bold" letter-spacing="4" fill="#000" text-anchor="middle">RECOVERY</text>
-  <text x="30" y="166" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Version 23.2 (20260927)</text>
+  <text x="30" y="166" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Version 23.2 (20261001)</text>
   <text x="30" y="194" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Product name - Kompakt</text>
   <text x="30" y="222" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="start">Active slot: a</text>
   <text x="420" y="166" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="19" font-weight="normal" fill="#000" text-anchor="end">90%</text>
@@ -21,9 +21,19 @@
   <text x="30" y="262" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="15" font-weight="normal" fill="#000" text-anchor="start">To install additional packages, you</text>
   <text x="30" y="282" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="15" font-weight="normal" fill="#000" text-anchor="start">need to reboot recovery first. Do you</text>
   <text x="30" y="302" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="15" font-weight="normal" fill="#000" text-anchor="start">want to reboot to recovery now?</text>
-  <text x="34" y="348" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">Yes</text>
-  <rect x="20" y="372" width="440" height="44" fill="none" stroke="#000" stroke-width="3"/>
-  <text x="34" y="400" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">No</text>
-  <text x="24" y="736" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Install completed with status 0.</text>
-  <text x="24" y="760" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Installation complete.</text>
+  <rect x="20" y="320" width="440" height="44" fill="none" stroke="#000" stroke-width="3"/>
+  <text x="34" y="348" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">No</text>
+  <text x="34" y="400" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="16" font-weight="normal" fill="#000" text-anchor="start">Yes</text>
+  <text x="24" y="528" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Now send the package you want to</text>
+  <text x="24" y="550" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">apply</text>
+  <text x="24" y="572" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">to the device with "adb sideload</text>
+  <text x="24" y="594" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">&lt;filename&gt;"...</text>
+  <text x="24" y="616" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Supported API: 3</text>
+  <text x="24" y="638" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Finding update package...</text>
+  <text x="24" y="660" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Verifying update package...</text>
+  <text x="24" y="682" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Update package verification took</text>
+  <text x="24" y="704" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">100.0 s (result 0).</text>
+  <text x="24" y="726" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Installing update...</text>
+  <text x="24" y="748" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Step 1/2</text>
+  <text x="24" y="770" font-family="'Roboto Mono','DejaVu Sans Mono',monospace" font-size="17" font-weight="normal" fill="#000" text-anchor="start">Step 2/2</text>
 </svg>

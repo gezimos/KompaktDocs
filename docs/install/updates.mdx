@@ -7,7 +7,96 @@ import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 # Updates
 
 Your apps, accounts and settings stay. No wipe is needed.
+
+:::warning[From 1.1 to 1.2: update manually]
+- Update to 1.2 manually, with `adb reboot sideload` below. Over the air does
+  not work for this update.
+- From 1.2 on, updates come over the air.
+:::
+
+## Update manually
+
+The same update package as the first install. Take the one for your phone and
+edition:
+
+| | GApps | Vanilla |
+|---|---|---|
+| Global | [`KompaktOS-1.2-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-Global-GApps.zip) | [`KompaktOS-1.2-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-Global-Vanilla.zip) |
+| North American | [`KompaktOS-1.2-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-USA-GApps.zip) | [`KompaktOS-1.2-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-USA-Vanilla.zip) |
+
+1. Connect the phone to the computer, with USB debugging on.
+2. Restart it into the recovery, ready for the package:
+
+   ```
+   adb reboot sideload
+   ```
+
+   The recovery opens **Apply from ADB** by itself.
+3. On the computer:
+
+   ```
+   adb sideload /path/to/KompaktOS-1.2-Global-GApps.zip
+   ```
+
+- The computer's counter stops at about 47% and stays there. That is normal.
+- The phone has read the whole file by then and installs it from memory. Watch
+  the bar on the phone instead.
+
+<Screenshot src="/img/screens/lineage-recovery-sideload.svg" caption="Waiting for adb sideload." />
+
+### While it installs
+
+It checks the package first, then installs it, with a bar and a percentage at
+the bottom. It takes about 7 minutes. **Do not interrupt it:** the phone is not
+usable until the install finishes.
+
+<Screenshot src="/img/screens/lineage-recovery-installing.svg" caption="Installing, with the bar at the bottom." />
+
+### When it finishes
+
+- After **Step 2/2**, the recovery asks whether to reboot to recovery to
+  install more packages. This question means the install worked.
+- Choose **No**. The log then shows `Install completed with status 0.`
+- Choose **Reboot system now**.
+
+<Screenshot src="/img/screens/lineage-recovery-reboot-prompt.svg" caption="Choose No, then Reboot system now." />
+
+### From the SD card
+
+Without USB, from the recovery's menu:
+
+1. Copy the update package to the SD card.
+2. Open the recovery:
+
+   ```
+   adb reboot recovery
+   ```
+
+3. **Apply update** → **Choose from sdcard1**, and pick the file.
+
+- LineageOS recovery works both by touch and with the buttons: Volume-Up and
+  Volume-Down to move, Power to select.
+- The install and the end are the same as with `adb sideload`.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-select-apply.svg" caption="The LineageOS recovery, with Apply update selected." />
+  <Screenshot src="/img/screens/lineage-recovery-apply.svg" caption="Apply update: over USB, or from the SD card." />
+  <Screenshot src="/img/screens/lineage-recovery-sdcard.svg" caption="Picking the update package on the SD card." />
+</ScreenshotRow>
+
+### The recovery's other menus
+
+**Advanced** has fastbootd (**Enter fastboot**), the bootloader, the recovery
+log and power off.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/lineage-recovery-advanced.svg" caption="Advanced." />
+  <Screenshot src="/img/screens/lineage-fastbootd.svg" caption="fastbootd, from Enter fastboot." />
+</ScreenshotRow>
+
 ## Over the air
+
+From 1.2 on.
 
 1. Settings → System → **System updates** → **Check for updates**. A new
    update shows up under it, named by its date.
@@ -25,76 +114,6 @@ Your apps, accounts and settings stay. No wipe is needed.
   <Screenshot src="/img/screens/ota-4-installing.png" caption="Installing in the background." />
   <Screenshot src="/img/screens/ota-5-reboot.png" caption="4. Done: tap Reboot." />
   <Screenshot src="/img/screens/ota-6-restarting.png" caption="The phone restarts into the new version." />
-</ScreenshotRow>
-
-## By hand, from the recovery
-
-The same update package as the first install, installed from the recovery.
-Take the one for your phone and edition:
-
-| | GApps | Vanilla |
-|---|---|---|
-| Global | [`KompaktOS-1.1-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-Global-GApps.zip) | [`KompaktOS-1.1-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-Global-Vanilla.zip) |
-| North American | [`KompaktOS-1.1-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-USA-GApps.zip) | [`KompaktOS-1.1-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.1/KompaktOS-1.1-USA-Vanilla.zip) |
-
-### Open the recovery
-
-```
-adb reboot recovery
-```
-
-LineageOS recovery works both by touch and with the buttons: Volume-Up and
-Volume-Down to move, Power to select.
-
-<ScreenshotRow>
-  <Screenshot src="/img/screens/lineage-recovery-select-apply.svg" caption="The LineageOS recovery, with Apply update selected." />
-  <Screenshot src="/img/screens/lineage-recovery-apply.svg" caption="Apply update: over USB, or from the SD card." />
-</ScreenshotRow>
-
-### Over USB
-
-1. **Apply update** → **Apply from ADB**.
-2. On the computer:
-
-   ```
-   adb sideload /path/to/KompaktOS-1.1-Global-GApps.zip
-   ```
-
-The computer's counter stops at about 47% and stays there. That is normal: the
-phone has read the whole file and installs it from memory. Watch the bar on the
-phone instead.
-
-<Screenshot src="/img/screens/lineage-recovery-sideload.svg" caption="Waiting for adb sideload." />
-
-### From the SD card
-
-1. Copy the update package to the SD card.
-2. **Apply update** → **Choose from sdcard1**, and pick the file.
-
-<Screenshot src="/img/screens/lineage-recovery-sdcard.svg" caption="Picking the update package on the SD card." />
-
-### While it installs
-
-It checks the package first, then installs it, with a bar and a percentage at
-the bottom. It takes about 7 minutes. **Do not interrupt it:** the phone is not
-usable until the install finishes.
-
-<Screenshot src="/img/screens/lineage-recovery-installing.svg" caption="Installing, with the bar at the bottom." />
-
-### When it finishes
-
-It asks whether to reboot to recovery to install more packages. Choose **No**,
-then **Reboot system now**.
-
-<Screenshot src="/img/screens/lineage-recovery-reboot-prompt.svg" caption="Choose No, then Reboot system now." />
-### The recovery's other menus
-
-**Advanced** has fastbootd (**Enter fastboot**), the bootloader, the recovery
-log and power off.
-
-<ScreenshotRow>
-  <Screenshot src="/img/screens/lineage-recovery-advanced.svg" caption="Advanced." />
-  <Screenshot src="/img/screens/lineage-fastbootd.svg" caption="fastbootd, from Enter fastboot." />
 </ScreenshotRow>
 
 ## After an update

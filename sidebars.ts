@@ -32,6 +32,7 @@ const sidebars: SidebarsConfig = {
       label: 'Features',
       items: [
         'features/what-works',
+        'features/faq',
         'features/eink',
         'features/per-app',
         'features/sleep-screen',
