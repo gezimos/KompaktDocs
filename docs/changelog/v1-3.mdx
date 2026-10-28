@@ -1,0 +1,116 @@
+---
+title: KompaktOS 1.3 beta
+sidebar_label: '1.3 beta'
+slug: /changelog/1.3
+---
+
+# KompaktOS 1.3 beta
+
+Not released yet. Everything that changes when you update from 1.2.
+
+Each change has a number. If you have a question about one, mention its
+number, for example "1.3 #14".
+
+## Security
+
+1. Android security update of 1 October 2026 (1.2 had 1 August 2026).
+2. The SIM PIN is asked again when you start the phone with Offline+ on. Before,
+   switching Offline+ off connected the SIM without its PIN.
+
+## Google
+
+3. Google accounts can be added again. After Google Play Services updated
+   itself, the sign-in screen crashed.
+
+## Lock screen and always-on display
+
+4. Locking goes straight to the always-on display, with no sleep picture
+   before it and no ghost of it under the clock.
+5. A media card on the lock screen, like Katapult's music widget:
+   - The track on top, the cover beside previous, play/pause, next and stop.
+   - The same card replaces the media notification in the notifications shade.
+   - To hide it on the lock screen: Settings → Sound & vibration → Media →
+     **Show media on lock screen**.
+6. Quick Settings can be kept off the lock screen: Settings → Display → Lock
+   screen → **Quick settings on lock screen**. Notifications still open.
+7. Per-app invert no longer turns the lock screen black. It turns off when the
+   phone locks and comes back when you unlock into the app.
+
+## Speed
+
+8. The phone is usable straight after a restart. Apps that do not need to start
+   at boot start when you first open them, or a couple of minutes later. Clock,
+   calendar reminders, Google Play Services and emergency alerts still start at
+   once.
+9. Fewer apps start in the background after a restart. Calls, texts, alarms
+   and reminders are not held back.
+10. Apps are closed far less often. Idle apps are compressed in memory instead,
+    and apps are closed only when the phone is really short of memory.
+11. The memory card is scanned five minutes after boot, not while you open your
+    first apps. New files on it appear after the scan.
+
+## E-ink
+
+12. Adaptive brightness is made for a frontlight:
+    - Low in the dark, about a quarter of the slider in low light.
+    - Less as the room gets brighter.
+    - Off from about the light of a cloudy window.
+13. **Quality** redraws faster, and cleans the whole screen half as often.
+    **Text** works the same way, so a small change no longer flashes the text
+    around it.
+14. No more **Auto** mode. It ghosted badly after scrolling. A phone or app set
+    to Auto now uses **Fast + dither**, and the Auto tile is gone.
+15. Waking the phone keeps your e-ink mode. Before, the lock screen always drew
+    in Fast.
+
+## Kompakt app
+
+16. New settings in ⋮ → Advanced:
+    - **Fast speed**: from 9 steps down to 5. Fewer steps follow your finger
+      sooner, with more ghosting. 8 and 9 give deeper blacks and fewer traces.
+    - **Dither pattern** for Fast + dither: Normal, Pattern, Hybrid or Noise.
+    - **Dither brightness**: lightens the dark greys of Pattern, Hybrid and Noise,
+      so photos keep their shadows.
+    - **Frame rate**: 60, 30, 15 or 10 frames a second, 15 by default. Apps draw
+      less often, which saves battery the screen cannot show anyway. Swipes still
+      feel the same. Restarts the phone. By Jackson Goode.
+17. A dither pattern per app, in the app's e-ink settings under its mode.
+18. Text stays sharp with the Pattern, Hybrid and Noise dithers, and is as bold
+    as in Normal. Photos are still dithered.
+19. Temperature offset, Fast speed and Dither pattern each have **Reset to
+    default** in their info.
+20. Holding a Kompakt tile in Quick Settings opens the Kompakt app.
+
+## Buttons and gestures
+
+21. Both flashlights at once:
+    - A **Both flashlights** lock screen shortcut, beside Warm flashlight.
+    - Kompakt app → Settings → **Power button light** → **Both**.
+    - A **Both flashlights** action for the fingerprint sensor.
+    - If either light is on, it turns both off.
+22. The warm flashlight stays on when you switch the white one off. Before, both
+    went off while the warm tile still showed on.
+
+## Settings
+
+23. Swiping back a page returns to the same page. Before, a setting could slide
+    onto the next page. The same fix is in Contacts, Phone, Calendar, Music,
+    Files and the Camera settings.
+24. The arrow that opens a notification stands alone, without its pill, and the
+    first line of a notification has more room.
+25. The notification light colour is picked on one bar of named colours, with a
+    slider below it from the colour to white.
+
+## Sound
+
+26. A car AUX cable no longer opens the voice assistant or rewinds the music.
+
+## Apps
+
+27. **Music**: follows LineageOS's latest version. Album and playlist pages have
+    four outlined buttons: shuffle, add to queue, play next and play all.
+28. **Clock**: the settings icon shows in light mode.
+29. **Katapult 1.7**: Google's At a Glance weather shows again.
+30. **inkOS 0.7.**
+31. **inkOS** is fast straight after an update. Before, it ran slowly until the
+    phone had spent a night on the charger.
