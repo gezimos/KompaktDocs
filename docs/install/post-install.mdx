@@ -91,6 +91,29 @@ set it up once.
 4. Restart the phone.
 5. Settings → **Network & internet** → **SIMs** → your SIM → turn on **VoLTE**.
 
+:::warning[The IMS APK does not download?]
+
+The download comes from phh.me, whose HTTPS certificate has expired. The phone
+refuses a download from a site with an expired certificate, so the button in
+step 1 fails. Download the file in a browser instead:
+
+1. Open [treble.phh.me/ims-mtk-u-resigned.apk](https://treble.phh.me/ims-mtk-u-resigned.apk)
+   in a browser, on the phone or on a computer.
+2. When the browser warns that the connection is not private, open the
+   advanced options and choose to continue to treble.phh.me. The wording
+   differs by browser.
+3. Let the file download.
+4. If you used a computer, copy the file to the phone.
+5. Install it from **Files** → Downloads. With Google Play services, tap
+   **Install anyway** at the alert.
+6. Carry on from step 3 above.
+
+- Take only this file, from this address.
+- The file is 7,712,039 bytes. Its md5 is `54f592832c9d4ecc10a1f54dc59777ab`.
+- It is the file installed on a working Kompakt.
+
+:::
+
 <ScreenshotRow>
   <Screenshot src="/img/screens/ims-1-system.png" caption="Settings → System → TrebleDroid Settings." />
   <Screenshot src="/img/screens/ims-2-trebledroid.png" caption="IMS features." />
