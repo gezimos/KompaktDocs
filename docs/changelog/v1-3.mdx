@@ -11,6 +11,24 @@ Not released yet. Everything that changes when you update from 1.2.
 Each change has a number. If you have a question about one, mention its
 number, for example "1.3 #14".
 
+## New in this beta
+
+Changed since the last beta (build 438). Each one is described in full under
+its number below.
+
+- Starting with Offline+ on no longer drains the battery (#4).
+- Data usage is counted per app again (#5).
+- The emergency dialer follows dark mode (#6).
+- Apps you leave are frozen, and QcRilAm is gone (#16, #17).
+- The frontlight learns from the brightness slider (#25).
+- Changes of light fade in steps too small to see (#26).
+- Auto brightness answers in about half a second (#27).
+- **Auto refresh** flashes the moment you switch apps (#28).
+- The Kompakt app has a new look: one row per setting (#29).
+- Camera: the frame matches the photo or video, photos are always full size,
+  and video stabilization is off (#41 to #44).
+- Latest builds of Katapult 1.7 and inkOS 0.7 (#47, #48).
+
 ## Security
 
 1. Android security update of 1 October 2026 (1.2 had 1 August 2026).
@@ -22,59 +40,85 @@ number, for example "1.3 #14".
 3. Google accounts can be added again. After Google Play Services updated
    itself, the sign-in screen crashed.
 
+## Phone and data
+
+4. Starting the phone with Offline+ on no longer drains the battery.
+   - Before, the modem tried to start every 14 seconds for as long as Offline+
+     stayed on.
+   - Now the modem starts only when you switch Offline+ off, and the network is
+     back within seconds.
+5. Data usage is counted per app again. Settings listed only "Hotspot &
+   tethering".
+6. The emergency dialer follows dark mode:
+   - White in light mode, black in dark mode. Before, a dark lock screen
+     wallpaper made it black in light mode.
+   - An outlined call button instead of the green one.
+   - The emergency information box is outlined, with no grey fill, and takes
+     less height.
+
 ## Lock screen and always-on display
 
-4. Locking goes straight to the always-on display, with no sleep picture
+7. Locking goes straight to the always-on display, with no sleep picture
    before it and no ghost of it under the clock.
-5. A media card on the lock screen, like Katapult's music widget:
+8. A media card on the lock screen, like Katapult's music widget:
    - The track on top, the cover beside previous, play/pause, next and stop.
    - The same card replaces the media notification in the notifications shade.
    - To hide it on the lock screen: Settings → Sound & vibration → Media →
      **Show media on lock screen**.
-6. Quick Settings can be kept off the lock screen: Settings → Display → Lock
+9. Quick Settings can be kept off the lock screen: Settings → Display → Lock
    screen → **Quick settings on lock screen**. Notifications still open.
-7. Per-app invert no longer turns the lock screen black. It turns off when the
-   phone locks and comes back when you unlock into the app.
-8. Always-on display stability improvements.
-9. The always-on display repaints as often as you choose: Kompakt app →
-   Display → **Always-on display refresh**.
-   - Auto, 1, 5, 10 or 60 minutes, on the clock: 5 minutes repaints at 6:05,
-     6:10.
-   - Auto is as before: the clock every minute, and a notification at once.
-   - With a number, a notification waits for the next repaint too.
-   - Each repaint wakes the phone for about 2 seconds, so fewer repaints use
-     less battery.
+10. Per-app invert no longer turns the lock screen black. It turns off when the
+    phone locks and comes back when you unlock into the app.
+11. Always-on display stability improvements:
+    - It stays on when an app is inverted. Before, the phone stopped at the
+      sleep picture.
+    - A sleeping phone no longer keeps the lock screen drawn on the always-on
+      display.
+12. The always-on display repaints as often as you choose: Kompakt app →
+    Display → **Always-on display refresh**.
+    - Auto, 1, 5, 10 or 60 minutes, on the clock: 5 minutes repaints at 6:05,
+      6:10.
+    - Auto is as before: the clock every minute, and a notification at once.
+    - With a number, a notification waits for the next repaint too.
+    - Each repaint wakes the phone for about 2 seconds, so fewer repaints use
+      less battery.
 
 ## Speed
 
-10. Memory improvements at boot: after a restart the phone no longer starts all
+13. Memory improvements at boot: after a restart the phone no longer starts all
     its apps at once, so it is usable sooner.
-11. Fewer apps start in the background after a restart. Calls, texts, alarms
+14. Fewer apps start in the background after a restart. Calls, texts, alarms
     and reminders are not held back.
-12. Apps are closed far less often. Idle apps are compressed in memory instead,
+15. Apps are closed far less often. Idle apps are compressed in memory instead,
     and apps are closed only when the phone is really short of memory.
-13. The memory card is scanned five minutes after boot, not while you open your
+16. Apps you leave are frozen:
+    - A few seconds after you leave an app, it uses no processor until you come
+      back.
+    - Its memory is compressed, so more apps stay open.
+17. One less app running for nothing: QcRilAm, a Qualcomm leftover that does
+    nothing on this phone, is gone.
+18. The memory card is scanned five minutes after boot, not while you open your
     first apps. New files on it appear after the scan.
 
 ## E-ink
 
-14. Adaptive brightness is made for a frontlight:
+19. Adaptive brightness is made for a frontlight:
     - Low in the dark, about a quarter of the slider in low light.
     - Less as the room gets brighter.
     - Off from about the light of a cloudy window.
-15. **Quality** redraws faster, and cleans the whole screen half as often.
+20. **Quality** redraws faster, and cleans the whole screen half as often.
     **Text** works the same way, so a small change no longer flashes the text
     around it.
-16. No more **Auto** mode. It ghosted badly after scrolling. A phone or app set
+21. No more **Auto** mode. It ghosted badly after scrolling. A phone or app set
     to Auto now uses **Fast + dither**, and the Auto tile is gone.
-17. Waking the phone keeps your e-ink mode. Before, the lock screen always drew
+22. Waking the phone keeps your e-ink mode. Before, the lock screen always drew
     in Fast.
-18. A mode, Fast speed or temperature offset changed in the Kompakt app gets a
+23. A mode, Fast speed or temperature offset changed in the Kompakt app gets a
     black refresh, as a mode picked on a tile does.
 
 ## Display
 
-19. Set the brightness curve yourself: Kompakt app → Display → Sleep screen &
+24. Set the brightness curve yourself: Kompakt app → Display → Sleep screen &
     frontlight → **Auto brightness curve**.
     - The light, as a percent of full, for each kind of light: Dark, Dim room,
       Lamp light, Lit room, Bright room and Daylight.
@@ -82,59 +126,109 @@ number, for example "1.3 #14".
       you get.
     - Each tap is one step you can see.
     - It is kept after a restart.
+25. The frontlight learns from you:
+    - With auto brightness on, move the brightness slider to the light you want.
+    - From then on, in that much light, the frontlight comes up at that level by
+      itself.
+    - The curve page shows what it has learned; **Reset** forgets it.
+26. A change of room fades, it does not jump:
+    - The frontlight dims in steps too small to see, sixteen times finer at the
+      dim end.
+    - A change of light takes about a quarter of a second; lamp light to off
+      takes about three.
+    - The slider still answers at once.
+27. Auto brightness answers in about half a second. Before, it waited 3 to 4
+    seconds, and small changes of light were ignored.
 
 ## Kompakt app
 
-20. New settings in ⋮ → Advanced:
+28. New settings in ⋮ → Advanced:
     - **Fast speed**: from 9 steps down to 5. Fewer steps follow your finger
       sooner, with more ghosting. 8 and 9 give deeper blacks and fewer traces.
     - **Dither pattern** for Fast + dither: Normal, Pattern, Hybrid or Noise.
     - **Dither brightness**: lightens the dark greys of Pattern, Hybrid and Noise,
       so photos keep their shadows.
-    - **Frame rate**: 60, 30, 15 or 10 frames a second, 15 by default. Apps draw
-      less often, which saves battery the screen cannot show anyway. Swipes still
+    - **Frame rate**: 60, 30, 15 or 10 frames a second, 60 by default. A lower
+      rate makes apps draw less often, which saves battery the screen cannot show anyway. Swipes still
       feel the same. Restarts the phone. By Jackson Goode.
-21. A dither pattern per app, in the app's e-ink settings under its mode.
-22. Text stays sharp with the Pattern, Hybrid and Noise dithers, and is as bold
+    - **Updates per full refresh**: 6, 12, 24 or 48 small updates before the whole page is
+      redrawn once. 24 by default. A lower number clears ghosts sooner in Text
+      and Quality.
+    - **Auto refresh**: one flash the moment you open an app, switch to one or go
+      back to Home, to clear what the last one left. Off by default.
+29. A new look: every setting is one row.
+    - An icon, the name, one line saying what it does, and its switch or value
+      on the right.
+    - Only what you pick or press has an outline: the mode circles, chips and
+      buttons.
+    - Longer explanations are behind the info icon.
+    - The per-app list shows each app's icon with its mode under the name.
+30. A dither pattern per app, in the app's e-ink settings under its mode.
+31. Text stays sharp with the Pattern, Hybrid and Noise dithers, and is as bold
     as in Normal. Photos are still dithered.
-23. Temperature offset, Fast speed and Dither pattern each have **Reset to
+32. Temperature offset, Fast speed and Dither pattern each have **Reset to
     default** in their info.
-24. Holding a Kompakt tile in Quick Settings opens the Kompakt app.
+33. Holding a Kompakt tile in Quick Settings opens the Kompakt app.
 
 ## Buttons and gestures
 
-25. Both flashlights at once:
+34. Both flashlights at once:
     - A **Both flashlights** lock screen shortcut, beside Warm flashlight.
     - Kompakt app → Settings → **Power button light** → **Both**.
     - A **Both flashlights** action for the fingerprint sensor.
     - If either light is on, it turns both off.
-26. The warm flashlight stays on when you switch the white one off. Before, both
+35. The warm flashlight stays on when you switch the white one off. Before, both
     went off while the warm tile still showed on.
 
 ## Settings
 
-27. Swiping back a page returns to the same page. Before, a setting could slide
+36. Swiping back a page returns to the same page. Before, a setting could slide
     onto the next page. The same fix is in Contacts, Phone, Calendar, Music,
     Files and the Camera settings.
-28. The arrow that opens a notification stands alone, without its pill, and the
+37. The arrow that opens a notification stands alone, without its pill, and the
     first line of a notification has more room.
-29. The notification light colour is picked on one bar of named colours, with a
+38. The notification light colour is picked on one bar of named colours, with a
     slider below it from the colour to white.
 
 ## Recents
 
-30. **No recent items** shows only on its white background, never over the home
+39. **No recent items** shows only on its white background, never over the home
     screen before it.
 
 ## Sound
 
-31. A car AUX cable no longer opens the voice assistant or rewinds the music.
+40. A car AUX cable no longer opens the voice assistant or rewinds the music.
+
+## Camera
+
+41. The frame on screen matches the photo or video. In 720p and 1080p video the
+    screen showed more above and below than the video kept.
+42. Photos are always full size, 4:3 at 3264×2448:
+    - A 16:9 photo was only 1920×1088 (2 MP).
+    - The aspect ratio button is gone.
+43. Video stabilization is off, and its switch is gone:
+    - The camera has no optical stabilization (OIS).
+    - The processor cannot run electronic stabilization (EIS) without dropping
+      frames, so videos with it jumped.
+44. The recording timer redraws once a second instead of about 16 times, which
+    saves screen refreshes while you record.
 
 ## Apps
 
-32. **Music**: follows LineageOS's latest version. Album and playlist pages have
+45. **Music**: follows LineageOS's latest version. Album and playlist pages have
     four outlined buttons: shuffle, add to queue, play next and play all.
-33. **Clock**: the settings icon shows in light mode.
-34. **Katapult 1.7**: Google's At a Glance weather shows again.
-35. **inkOS 0.7.**
-36. **inkOS** runs fast right after an update.
+46. **Clock**: the settings icon shows in light mode.
+47. **Katapult 1.7**: Google's At a Glance weather shows again.
+48. **inkOS 0.7.**
+49. **inkOS** runs fast right after an update.
+
+## Also fixed
+
+50. The e-ink mode of each app is applied more reliably when you switch apps,
+    and no longer needs an accessibility service.
+51. Animations are off and stay off:
+    - **Remove animations** is always on, and its switch is gone.
+    - The animation settings in Developer options are hidden.
+    - Turning Developer options off no longer turns animations back on.
+52. The system no longer crashes when a heads-up notification appears.
+53. Tapping outside the numbers no longer closes the PIN pad.
