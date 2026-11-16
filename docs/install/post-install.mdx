@@ -12,16 +12,17 @@ import TabItem from '@theme/TabItem';
 After installing, in this order:
 
 1. [Wait out the first start](#the-first-start).
-2. [Choose a launcher](#choose-a-launcher).
-3. [Set up calls over 4G](#calls-over-4g-volte), needed to make calls on most
+2. GApps edition: [register the phone with Google](#play-protect-popup-gapps)
+   right away. If you do not, the Play Protect popup **will** appear.
+3. [Choose a launcher](#choose-a-launcher).
+4. [Set up calls over 4G](#calls-over-4g-volte), needed to make calls on most
    networks.
-4. Optional: [turn on Wi-Fi calling](#wi-fi-calling).
-5. GApps edition: [remove the Play Protect popup](#play-protect-popup-gapps).
+5. Optional: [turn on Wi-Fi calling](#wi-fi-calling).
 
 ## The first start
 
-- **The first boot takes several minutes.** The e-ink panel only repaints when
-  something changes, so it can look stuck: leave it alone for five minutes.
+- **The first boot takes several minutes.** The e-ink screen only changes when
+  something on it does, so it can look stuck: leave it alone for five minutes.
 - **After that, the phone can feel slow for a while.** Android is still
   setting up apps in the background. It is snappy again once that finishes.
 
@@ -91,29 +92,6 @@ set it up once.
 4. Restart the phone.
 5. Settings → **Network & internet** → **SIMs** → your SIM → turn on **VoLTE**.
 
-:::warning[The IMS APK does not download?]
-
-The download comes from phh.me, whose HTTPS certificate has expired. The phone
-refuses a download from a site with an expired certificate, so the button in
-step 1 fails. Download the file in a browser instead:
-
-1. Open [treble.phh.me/ims-mtk-u-resigned.apk](https://treble.phh.me/ims-mtk-u-resigned.apk)
-   in a browser, on the phone or on a computer.
-2. When the browser warns that the connection is not private, open the
-   advanced options and choose to continue to treble.phh.me. The wording
-   differs by browser.
-3. Let the file download.
-4. If you used a computer, copy the file to the phone.
-5. Install it from **Files** → Downloads. With Google Play services, tap
-   **Install anyway** at the alert.
-6. Carry on from step 3 above.
-
-- Take only this file, from this address.
-- The file is 7,712,039 bytes. Its md5 is `54f592832c9d4ecc10a1f54dc59777ab`.
-- It is the file installed on a working Kompakt.
-
-:::
-
 <ScreenshotRow>
   <Screenshot src="/img/screens/ims-1-system.png" caption="Settings → System → TrebleDroid Settings." />
   <Screenshot src="/img/screens/ims-2-trebledroid.png" caption="IMS features." />
@@ -153,10 +131,14 @@ Make and receive calls over Wi-Fi where the mobile signal is weak or missing. Se
 
 ## Play Protect popup (GApps)
 
-On the GApps edition Google may show "This device isn't Play Protect
-certified", which stops the Play Store and other Google apps. Registering the
-phone's device ID once with Google removes it: updates keep it, only a factory
-reset undoes it.
+On the GApps edition, Google **will** show "This device isn't Play Protect
+certified" on every unregistered phone. It stops the Play Store and other
+Google apps.
+
+- **Register right after installing,** as soon as the phone is set up and
+  before you use the Play Store. That is the only way to never see the popup.
+- If the popup has already shown up, registering removes it.
+- It is done once: updates keep it, only a factory reset undoes it.
 
 <a className="button button--primary button--lg" href="https://www.google.com/android/uncertified/" target="_blank" rel="noopener noreferrer">Register at google.com/android/uncertified</a>
 
@@ -164,7 +146,7 @@ reset undoes it.
 
 ### Find the device ID and register it
 
-Do this after setting up the phone. You need [adb](/prepare/unlocking#1-install-adb).
+Do this right after setting up the phone. You need [adb](/prepare/unlocking#1-install-adb).
 
 1. Settings → System → Developer options → turn on **Rooted debugging**
    (with **USB debugging** on).
