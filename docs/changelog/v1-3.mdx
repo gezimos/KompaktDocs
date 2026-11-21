@@ -1,33 +1,15 @@
 ---
-title: KompaktOS 1.3 beta
-sidebar_label: '1.3 beta'
+title: KompaktOS 1.3
+sidebar_label: '1.3'
 slug: /changelog/1.3
 ---
 
-# KompaktOS 1.3 beta
+# KompaktOS 1.3
 
-Not released yet. Everything that changes when you update from 1.2.
+21 November 2026. Everything that changes when you update from 1.2.
 
 Each change has a number. If you have a question about one, mention its
 number, for example "1.3 #14".
-
-## New in this beta
-
-Changed since the last beta (build 438). Each one is described in full under
-its number below.
-
-- Starting with Offline+ on no longer drains the battery (#4).
-- Data usage is counted per app again (#5).
-- The emergency dialer follows dark mode (#6).
-- Apps you leave are frozen, and QcRilAm is gone (#16, #17).
-- The frontlight learns from the brightness slider (#25).
-- Changes of light fade in steps too small to see (#26).
-- Auto brightness answers in about half a second (#27).
-- **Auto refresh** flashes the moment you switch apps (#28).
-- The Kompakt app has a new look: one row per setting (#29).
-- Camera: the frame matches the photo or video, photos are always full size,
-  and video stabilization is off (#41 to #44).
-- Latest builds of Katapult 1.7 and inkOS 0.7 (#47, #48).
 
 ## Security
 
@@ -37,8 +19,9 @@ its number below.
 
 ## Google
 
-3. Google accounts can be added again. After Google Play Services updated
-   itself, the sign-in screen crashed.
+3. Adding a Google account works on the latest Google Play Services. On 1.2,
+   once Play Services had updated itself from the Play Store, the account
+   sign-in screen crashed.
 
 ## Phone and data
 
@@ -59,7 +42,9 @@ its number below.
 ## Lock screen and always-on display
 
 7. Locking goes straight to the always-on display, with no sleep picture
-   before it and no ghost of it under the clock.
+   before it and no ghost of it under the clock. The panel clears once as you
+   lock, so the always-on display no longer appears, flashes black, and
+   reappears, and it shows a moment sooner.
 8. A media card on the lock screen, like Katapult's music widget:
    - The track on top, the cover beside previous, play/pause, next and stop.
    - The same card replaces the media notification in the notifications shade.
@@ -74,13 +59,13 @@ its number below.
       sleep picture.
     - A sleeping phone no longer keeps the lock screen drawn on the always-on
       display.
-12. The always-on display repaints as often as you choose: Kompakt app →
+12. The always-on display clock updates as often as you choose: Kompakt app →
     Display → **Always-on display refresh**.
-    - Auto, 1, 5, 10 or 60 minutes, on the clock: 5 minutes repaints at 6:05,
+    - Auto, 1, 5, 10 or 60 minutes, on the clock: 5 minutes updates at 6:05,
       6:10.
     - Auto is as before: the clock every minute, and a notification at once.
-    - With a number, a notification waits for the next repaint too.
-    - Each repaint wakes the phone for about 2 seconds, so fewer repaints use
+    - With a number, a notification waits for the next update too.
+    - Each update wakes the phone for about 2 seconds, so fewer updates use
       less battery.
 
 ## Speed
@@ -102,35 +87,34 @@ its number below.
 
 ## E-ink
 
-19. Adaptive brightness is made for a frontlight:
-    - Low in the dark, about a quarter of the slider in low light.
-    - Less as the room gets brighter.
-    - Off from about the light of a cloudy window.
-20. **Quality** redraws faster, and cleans the whole screen half as often.
+19. **Quality** redraws faster, and cleans the whole screen half as often.
     **Text** works the same way, so a small change no longer flashes the text
     around it.
-21. No more **Auto** mode. It ghosted badly after scrolling. A phone or app set
+20. No more **Auto** mode. It ghosted badly after scrolling. A phone or app set
     to Auto now uses **Fast + dither**, and the Auto tile is gone.
-22. Waking the phone keeps your e-ink mode. Before, the lock screen always drew
+21. Waking the phone keeps your e-ink mode. Before, the lock screen always drew
     in Fast.
-23. A mode, Fast speed or temperature offset changed in the Kompakt app gets a
-    black refresh, as a mode picked on a tile does.
+22. A mode or a speed changed in the Kompakt app gets a black refresh, as a
+    mode picked on a tile does.
 
 ## Display
 
-24. Set the brightness curve yourself: Kompakt app → Display → Sleep screen &
-    frontlight → **Auto brightness curve**.
-    - The light, as a percent of full, for each kind of light: Dark, Dim room,
-      Lamp light, Lit room, Bright room and Daylight.
-    - The row in bold is the light you are in now, and its number is the light
-      you get.
-    - Each tap is one step you can see.
-    - It is kept after a restart.
-25. The frontlight learns from you:
-    - With auto brightness on, move the brightness slider to the light you want.
+23. Adaptive brightness is made for a frontlight:
+    - Low in the dark, about a quarter of the slider in low light.
+    - Less as the room gets brighter.
+    - Off from about the light of a cloudy window.
+24. The frontlight learns from you:
+    - With auto brightness on, move the brightness slider in Quick Settings to
+      the light you want.
     - From then on, in that much light, the frontlight comes up at that level by
-      itself.
-    - The curve page shows what it has learned; **Reset** forgets it.
+      itself, and slides from one learned light to the next.
+    - The last choice for a light wins.
+25. To see what it has learned, read only: Kompakt app → Display → Sleep screen
+    & frontlight → **Auto brightness curve**.
+    - Each light it has learned, in lux, with its level as a percent of full
+      light.
+    - The light the sensor sees now, and the level it gives.
+    - **Reset to default**, behind the info icon, forgets what it learned.
 26. A change of room fades, it does not jump:
     - The frontlight dims in steps too small to see, sixteen times finer at the
       dim end.
@@ -142,20 +126,28 @@ its number below.
 
 ## Kompakt app
 
-28. New settings in ⋮ → Advanced:
-    - **Fast speed**: from 9 steps down to 5. Fewer steps follow your finger
-      sooner, with more ghosting. 8 and 9 give deeper blacks and fewer traces.
+28. Settings in ⋮ → Advanced, consolidated into fewer options that each make a
+    difference:
+    - **Fast mode speed**: 11, 9, 8, 7, 6 or 5. The number is how many times
+      the screen pushes the ink for one change; fewer is quicker, with more
+      ghosting. 11 is what MuditaOS runs.
+    - **Text / Quality speed**: 46, 38, 33 or 28. Fewer is quicker and a
+      little less clean. 38 is the default.
+    - These two replace Temperature offset and Fast speed. Several of the old
+      choices did the same thing: +20, +30 and +40 were one speed, and Fast
+      speed 9, 8 and 7 were the same at +11.
+    - Your saved settings carry over.
     - **Dither pattern** for Fast + dither: Normal, Pattern, Hybrid or Noise.
-    - **Dither brightness**: lightens the dark greys of Pattern, Hybrid and Noise,
-      so photos keep their shadows.
+    - **Dither brightness**, inside Dither pattern: lightens the dark greys of
+      Pattern, Hybrid and Noise, so photos keep their shadows. Normal has none.
     - **Frame rate**: 60, 30, 15 or 10 frames a second, 60 by default. A lower
       rate makes apps draw less often, which saves battery the screen cannot show anyway. Swipes still
       feel the same. Restarts the phone. By Jackson Goode.
-    - **Updates per full refresh**: 6, 12, 24 or 48 small updates before the whole page is
-      redrawn once. 24 by default. A lower number clears ghosts sooner in Text
-      and Quality.
-    - **Auto refresh**: one flash the moment you open an app, switch to one or go
-      back to Home, to clear what the last one left. Off by default.
+    - **Partial updates**: Text and Quality redraw only what changed, and after
+      6, 12, 24 or 48 of these partial updates the whole screen gets a full
+      refresh. 24 by default.
+    - Dither pattern and Partial updates are one row each; tapping it opens a
+      sheet with the choices.
 29. A new look: every setting is one row.
     - An icon, the name, one line saying what it does, and its switch or value
       on the right.
@@ -166,8 +158,8 @@ its number below.
 30. A dither pattern per app, in the app's e-ink settings under its mode.
 31. Text stays sharp with the Pattern, Hybrid and Noise dithers, and is as bold
     as in Normal. Photos are still dithered.
-32. Temperature offset, Fast speed and Dither pattern each have **Reset to
-    default** in their info.
+32. The speed rows, Dither pattern and Partial updates each have **Reset to
+    default**.
 33. Holding a Kompakt tile in Quick Settings opens the Kompakt app.
 
 ## Buttons and gestures
@@ -232,3 +224,36 @@ its number below.
     - Turning Developer options off no longer turns animations back on.
 52. The system no longer crashes when a heads-up notification appears.
 53. Tapping outside the numbers no longer closes the PIN pad.
+54. Apps open without a splash screen. Android showed a blank page with the
+    app's icon before every app; that page is gone.
+    - The screen you were on stays until the app itself appears.
+    - An app can look slower to open. It isn't: the phone goes straight to
+      the app instead of showing the icon first.
+55. Refresh on unlock flashes before home appears, not after. The screen goes
+    from the lock screen, always-on display or sleep screen to black, then to
+    home. Before, it showed home, flashed, and showed home again.
+
+56. The carrier name stays on the status bar while Wi-Fi calling connects.
+    Before, it briefly read "No service" on Verizon as Wi-Fi calling came up.
+57. Turning auto-rotate off always goes back to portrait. Before, turned off
+    while the phone was sideways (in a car mount, for example), it stayed locked
+    in landscape, tapping it again did not help, and a restart kept it.
+58. No black screen that never changes after locking. Before, the screen could
+    stay black while the phone kept working (calls, unlock) until you restarted
+    it.
+59. Camera access in the Offline tab is a real block:
+    - Off: the camera works in Offline+. Before, it could not open at all.
+    - On: the camera has no power while the switch is on. Android's "unblock"
+      prompt cannot turn it back on.
+    - To use the camera again, flip the switch or turn Camera access off.
+60. Pairing with a car that starts the pairing no longer fails with "incorrect
+    PIN". Before, some cars asked for the PIN before the phone had finished
+    connecting. The phone showed the PIN dialog and accepted the PIN, but never
+    sent it, and after 30 seconds Settings said the PIN was wrong.
+61. MuditaOS 2.0 apps no longer crash: Weather, Phone, SMS, Recorder,
+    InkApps and others ask the phone about the Offline+ switch, and now get an
+    answer.
+62. The MuditaOS 2.0 Phone app lists and searches your contacts.
+63. Mudita's Chess app can play against the phone.
+64. The sleep picture no longer turns into black shapes now and then in the
+    Fast modes.

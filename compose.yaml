@@ -8,6 +8,7 @@ services:
     ports:
       - "3000:3000"
     restart: unless-stopped
+    # --poll: edits on the Mac reach the container only by polling.
     command: sh -c "npm install && npm start -- --host 0.0.0.0 --poll 1000"
 
   build:

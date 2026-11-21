@@ -5,19 +5,26 @@ title: E-ink
 
 import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 
+export const Example = ({src, caption}) => (
+  <figure style={{margin: '1rem 0', maxWidth: 480, flex: '1 1 300px'}}>
+    <img src={src} alt={caption} style={{display: 'block', width: '100%', height: 'auto', imageRendering: 'pixelated', border: '1px solid var(--ifm-color-emphasis-300)'}} />
+    <figcaption style={{marginTop: '0.4rem', fontSize: '0.82rem', lineHeight: 1.35, opacity: 0.8}}>{caption}</figcaption>
+  </figure>
+);
+
+export const Examples = ({children}) => (
+  <div style={{display: 'flex', flexWrap: 'wrap', gap: '1.25rem', alignItems: 'flex-start'}}>{children}</div>
+);
+
 
 # E-ink
 
-An e-ink panel holds its image without power, and every repaint takes time and
-battery. The mode decides how each repaint is done: fast and rough, or slow and
-clean.
-
-The Kompakt app has the controls, under **Display**.
+All the e-ink settings are in the Kompakt app, under **Display**.
 
 ## Modes
 
 <ScreenshotRow>
-  <Screenshot src="/img/screens/eink-display-tab.png" caption="Display tab: the six modes as circles, the current one marked and named in the heading." />
+  <Screenshot src="/img/screens/eink-display-tab.png" caption="Display tab: the modes as circles, the current one marked and named in the heading." />
   <Screenshot src="/img/screens/eink-modes-info.png" caption="The (i) beside the heading explains each mode." />
 </ScreenshotRow>
 
@@ -28,12 +35,44 @@ The Kompakt app has the controls, under **Display**.
 | **Fast + dither** | Two inks with dots of grey, no blink | Photos and gradients at speed |
 | **Text** | Sharp greys, slower | Reading |
 | **Quality** | The cleanest picture, slowest, blinks | PDFs, comics, photos |
-| **Auto** | Fast while the screen moves, quality when it settles | Leaving it alone |
+
+- **Text** and **Quality** redraw only the pixels that change.
+- They redraw the whole screen once every 24 small updates: see
+  [Partial updates](#partial-updates).
 
 The **e-ink** tile in Quick Settings switches the mode without opening the app:
 each tap moves to the next one.
 
-<Screenshot src="/img/screens/eink-qs-tile.png" caption="The e-ink tile in Quick Settings, showing Fast + dither." />
+<Screenshot src="/img/screens/eink-qs-tile.png" caption="The e-ink tile (circled), showing Fast + dither." />
+
+## Per-app modes
+
+An app gets its own mode while it is open. When you leave it, the mode set on
+the Display tab comes back.
+
+1. Display → **Per-app e-ink modes** lists every app with the mode it gets.
+2. Tap an app and pick its mode.
+3. **Follow master mode** gives it back the Display tab's mode.
+4. For a mode with dots, such as **Fast + dither**, **Dither pattern** picks
+   the app's own pattern. **Default** follows [Dither pattern](#dither-pattern).
+
+For example: **Text** for a reader, **Fast** for Signal or WhatsApp.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/per-app-list.png" caption="Every app with the mode it gets." />
+  <Screenshot src="/img/screens/per-app-picker.png" caption="Tapping one opens its picker: Follow master mode, the modes, Dither pattern and Invert colours." />
+</ScreenshotRow>
+
+## Per-app invert
+
+- For apps that only come with a dark theme, like **Spotify**.
+- Turns that app light, and only that app.
+- Display → Per-app e-ink modes → pick an app → **Invert colours**.
+
+<ScreenshotRow>
+  <Screenshot src="/img/screens/invert-spotify-off.png" caption="Spotify as it comes: mostly black ink." />
+  <Screenshot src="/img/screens/invert-spotify-on.png" caption="Spotify inverted: white paper, black text." />
+</ScreenshotRow>
 
 ## Clearing ghosting
 
@@ -50,19 +89,116 @@ the whole screen once, which clears them:
 
 <Screenshot src="/img/screens/eink-refresh-on-unlock.png" caption="Refresh on unlock: pick where the unlock comes from." />
 
-## Per-app modes
+## Advanced
 
-An app can have its own mode, and dark-only apps can have their colours
-inverted. See [Per-app modes](per-app).
+In the Kompakt app, tap **⋮ → Advanced**. Each setting there has an **(i)** or a
+sheet that explains it, with **Reset to default**.
 
-## Temperature offset
+<ScreenshotRow>
+  <Screenshot src="/img/screens/eink-advanced.png" caption="Advanced: Fast mode speed, Dither pattern, Text / Quality speed and Partial updates." />
+  <Screenshot src="/img/screens/eink-advanced-2.png" caption="Swipe up for the rest: Frame rate and Diagnostics." />
+</ScreenshotRow>
 
-In the Kompakt app, tap **⋮ → Advanced → Temperature offset**. The panel picks
-its waveform partly from temperature, and claiming a warmer panel makes it use
-fewer waveform frames: faster, at the cost of how cleanly the image settles.
+### Fast mode speed
 
-## Why everything is black and white
+<Screenshot src="/img/screens/eink-fast-speed-info.png" caption="The (i) on Fast mode speed." />
 
-The panel shows greys badly: in-between shades turn into a speckled pattern, and
-see-through or moving effects flicker. So KompaktOS draws its screens in black
-and white, and animations are turned off.
+- Choose 11, 9, 8, 7, 6 or 5. 11 is the default, Mudita's.
+- The number is how many times the panel pushes the ink for each change in the
+  Fast modes.
+- Fewer pushes follow your finger sooner when you scroll, but leave more grey
+  behind.
+- Text and Quality are not affected; use Text / Quality speed for those.
+
+### Text / Quality speed
+
+<Screenshot src="/img/screens/eink-text-speed-info.png" caption="The (i) on Text / Quality speed." />
+
+- Choose 46, 38, 33 or 28. 38 is the default.
+- The number is how many times the panel pushes the ink for each change in Text
+  and Quality.
+- Fewer pushes redraw sooner and can leave a little more of the last page
+  behind.
+- The Fast modes are not affected.
+
+### Dither pattern
+
+**Fast + dither** turns greys into black and white dots. **Dither pattern**
+decides where the dots go.
+
+<Screenshot src="/img/screens/eink-pattern-info.png" caption="Tap Dither pattern to choose how the dots go." />
+
+| Pattern | What it does |
+| --- | --- |
+| **Normal** | Mudita's, the default. Dots that crawl when the picture moves |
+| **Pattern** | A fine grid of dots that stays still |
+| **Hybrid** | Dots guided by the grid: more detail than Pattern |
+| **Noise** | Still like Pattern, without the grid |
+
+With Pattern, Hybrid and Noise:
+
+- Text, lines and icons stay sharp, and as bold as with Normal.
+- Very light greys become plain white and very dark greys plain black, so
+  backgrounds and text have no dots.
+
+An app can have its own pattern: see [Per-app modes](#per-app-modes).
+
+The pictures below are a test picture put through the phone's dither code, not
+photos of the panel.
+
+<Example src="/img/eink/dither-original.png" caption="The picture before dithering, in real greys." />
+
+<Examples>
+  <Example src="/img/eink/dither-normal.png" caption="Normal: dots on the whole page, even the light card, and the mid grey line breaks up." />
+  <Example src="/img/eink/dither-pattern.png" caption="Pattern: an even grid. The page stays white and the black line stays solid." />
+</Examples>
+
+<Examples>
+  <Example src="/img/eink/dither-hybrid.png" caption="Hybrid: more shades in the ball and the ramp than Pattern." />
+  <Example src="/img/eink/dither-noise.png" caption="Noise: the same shades as Pattern with the dots scattered, so no grid shows." />
+</Examples>
+
+### Dither brightness
+
+- Choose 0, +1, +2 or +3. 0 is the default.
+- It lightens the dark greys, so photos keep the detail in their shadows
+  instead of turning into solid black dots.
+- Black, white and text don't change.
+- Shown only while the pattern is Pattern, Hybrid or Noise.
+
+<Examples>
+  <Example src="/img/eink/dither-light-0.png" caption="0: the greys as the mode draws them." />
+  <Example src="/img/eink/dither-light-1.png" caption="+1: the dark and middle greys lighter." />
+</Examples>
+
+<Examples>
+  <Example src="/img/eink/dither-light-2.png" caption="+2: the light grey button is plain white and the ball's shadow opens up." />
+  <Example src="/img/eink/dither-light-3.png" caption="+3: only the darkest greys keep dense dots." />
+</Examples>
+
+### Partial updates
+
+<Screenshot src="/img/screens/eink-partial-updates.png" caption="Partial updates: how many before a full refresh." />
+
+- Choose 6, 12, 24 or 48 updates. 24 is the default.
+- Text and Quality redraw only the part of the screen that changed. Each of
+  these partial updates leaves a faint trace.
+- After this many of them the whole screen gets a full refresh, with one blink.
+- Fewer updates: the cleanest picture, with the most blinks. More updates:
+  fewer blinks and more traces.
+- The Fast modes never do this; they need a flash: see
+  [Clearing ghosting](#clearing-ghosting).
+
+### Frame rate
+
+<Screenshot src="/img/screens/eink-frame-rate.png" caption="Frame rate: 60 fps is the default." />
+
+- Choose 60, 30, 15 or 10 fps. 60 is the default.
+- It caps how many frames per second every app draws: the work the processor
+  and graphics chip do to make each new picture.
+- It does not change the display. The e-ink panel cannot show 60 changes a
+  second anyway, so frames above what it shows are wasted battery.
+- Touch is still read at the full rate. Only drawing is capped, so taps and
+  swipes land the same.
+- Scrolling and animations update less often at a low rate.
+- The phone restarts to apply a change.

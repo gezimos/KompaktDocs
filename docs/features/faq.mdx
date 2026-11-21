@@ -17,7 +17,7 @@ in the **Kompakt** app, in the app drawer, which has four tabs:
 | **Style** | Font, emoji, display width |
 | **Settings** | Fingerprint sensor, key vibration, Recents key, battery |
 
-The **⋮** menu holds **Advanced**: temperature offset and diagnostics.
+The **⋮** menu holds **Advanced**: e-ink speeds, dither pattern, partial updates, frame rate and diagnostics.
 
 ## The screen
 
@@ -61,7 +61,6 @@ Any of these flashes the whole screen once:
 | **Fast + dither** | Photos and gradients at speed. Dots of grey, no blink |
 | **Text** | Reading. Sharp greys, slower |
 | **Quality** | PDFs, comics, photos. Cleanest, slowest, blinks |
-| **Auto** | Leaving it alone. Fast while the screen moves, quality when it settles |
 
 - Set it in Kompakt app → **Display**, or tap the **E-ink** tile in Quick
   Settings to step through the modes.
@@ -78,23 +77,14 @@ Any of these flashes the whole screen once:
 - **Follow master mode** gives it back the Display tab's mode.
 - Apps that are always dark, such as Spotify, can be inverted to black on
   white: **Invert colours** on the same sheet.
-- More in [Per-app modes](per-app).
+- More in [Per-app modes](eink#per-app-modes).
 
 ### The picture is not clean enough, or redraws too slowly
 
-- Kompakt app → **⋮** → **Advanced** → **Temperature offset**.
-- A higher offset tells the panel it is warmer than it is: faster redraws,
-  slightly less clean.
-- Back to 0 for the cleanest picture.
-
-### Why is everything black and white, with no animations?
-
-- In-between greys turn into a speckled pattern on the panel.
-- See-through and moving effects flicker and cost a repaint each frame.
-- So KompaktOS draws its screens in two inks, black and white, and animations
-  are off.
-- Lists turn a page per swipe instead of scrolling with your finger: one
-  repaint per page instead of dozens.
+- Kompakt app → **⋮** → **Advanced** → **Text / Quality speed**.
+- Fewer steps redraw sooner and can leave a little more of the last page
+  behind.
+- **Reset to default** gives the cleanest picture.
 
 ### Can I fit more on the screen?
 
@@ -116,8 +106,8 @@ Any of these flashes the whole screen once:
 
 ### What does the always-on display cost?
 
-- About **3–4%** of the battery overnight.
-- The phone sleeps and wakes once a minute to paint the clock.
+- The phone sleeps and wakes to update the clock, once a minute by default.
+  Display → **Always-on display refresh** makes that every 5, 10 or 60 minutes.
 - Shows the clock, notification icons and the battery level.
 - Turn it on or off with the **Always on display** tile in Quick Settings.
 - More in [Always-on display](aod).
@@ -150,15 +140,15 @@ Any of these flashes the whole screen once:
 
 ### Can I have colour emoji?
 
-- Kompakt app → **Style** → **Emoji**: **Black and white** or **Colour**.
-- Black and white is the default: crisp on e-ink, in the text colour.
+- Kompakt app → **Style** → **Emoji**: **B&W** or **Colour**.
+- B&W (black and white) is the default: crisp on e-ink, in the text colour.
 - Flags and the newest emoji, which the black and white font does not have,
   stay in colour.
 - The phone restarts to apply a change.
 
 <Screenshot src="/img/screens/kompakt-emoji.png" caption="Style → Emoji." />
 
-## Buttons and sensors
+## Buttons and sensor
 
 ### What do the keys under the screen do?
 
@@ -200,6 +190,7 @@ Any of these flashes the whole screen once:
 
 - Always: the mobile network and the microphone, in hardware.
 - Your choice: Wi-Fi, Bluetooth and camera access. Kompakt app → **Offline**.
+- Camera access is a real block: the camera has no power while the switch is on.
 - A panel shows which way the switch now is.
 - More in [Offline switch](hardware/offline-switch).
 
@@ -256,17 +247,3 @@ Any of these flashes the whole screen once:
 - Some banking and ID apps refuse to continue without a front camera, so the
   back camera is offered as both.
 - More in [Camera](hardware/camera#front-camera).
-
-## Something is not right
-
-### Where can I see what is installed?
-
-- Kompakt app → **⋮** → **Advanced** → **Diagnostics**.
-- Shows which system, boot and vendor images are installed, calls over 4G, the
-  notification light and the e-ink panel's values.
-- Useful to include when you [ask for help](/support).
-
-### A Kompakt app setting says it needs our boot or vendor image
-
-- Some features need KompaktOS's own boot or vendor image, not Mudita's.
-- The full update package installs both. See [Updates](/install/updates).

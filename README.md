@@ -11,7 +11,8 @@ Everything runs in Docker, so you do not need Node on your machine.
 docker compose up
 ```
 
-Then open <http://localhost:3000>. Edits appear without a restart.
+Then open <http://localhost:3000>. Edits appear without a restart, except new
+files under `src/theme/`, which need `docker compose restart`.
 
 ## Build the static site
 
@@ -30,14 +31,15 @@ and open <http://localhost:3001>.
 ## Deploy
 
 Every push to `main` builds the site and publishes it to GitHub Pages, through
-`.github/workflows/deploy.yml`. The custom domain is set in `static/CNAME`.
+`.github/workflows/deploy.yml`. The custom domain is set in the repository's
+Pages settings: a deploy through Actions ignores `static/CNAME`.
 
 ## Layout
 
 ```
 docs/
   intro.mdx          first page
-  prepare/           backup and unlocking
+  prepare/           requirements, unlocking and backup
   install/           installing, updating, going back
   features/          what works and the Kompakt features
   develop/           the Extras section

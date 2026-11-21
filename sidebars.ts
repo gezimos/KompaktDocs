@@ -9,8 +9,8 @@ const sidebars: SidebarsConfig = {
       collapsed: false,
       items: [
         'prepare/requirements',
-        'prepare/mtkclient',
         'prepare/unlocking',
+        'prepare/mtkclient',
       ],
     },
     {
@@ -34,7 +34,6 @@ const sidebars: SidebarsConfig = {
         'features/what-works',
         'features/faq',
         'features/eink',
-        'features/per-app',
         'features/sleep-screen',
         'features/aod',
         'features/battery',
@@ -52,7 +51,12 @@ const sidebars: SidebarsConfig = {
       label: 'Extras',
       items: ['develop/understanding-android', 'develop/kernel-and-vendor', 'develop/building', 'develop/last-resort'],
     },
-    'changelog',
+    {
+      type: 'category',
+      label: 'Changelog',
+      link: {type: 'doc', id: 'changelog'},
+      items: ['changelog/v1-3', 'changelog/v1-2', 'changelog/v1-1'],
+    },
     'credits',
   ],
 };

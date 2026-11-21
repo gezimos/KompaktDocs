@@ -7,9 +7,18 @@ title: Backup with mtkclient
 [mtkclient](https://github.com/bkerler/mtkclient) makes a full backup of your
 phone over USB.
 
-- **Strongly recommended**, even if you never install KompaktOS.
-- If anything ever goes wrong, it puts your phone back as it was.
+:::tip[Strongly recommended: a backup with mtkclient]
+
+Not needed to install. You can always go back to MuditaOS without one by
+following [Going back](/install/going-back).
+
+**Why back up:**
+
+- It saves your data.
+- It saves every partition, including the ones unique to your phone.
 - You only do it once.
+
+:::
 
 ## Install
 
@@ -38,5 +47,15 @@ is encrypted, and installing formats it anyway.
 - Use nothing else in mtkclient: **Erase** and **Flash Tools** can break the
   phone for good.
 
-If the phone ever stops starting, [Last resort](/develop/last-resort) puts
-it back from this backup.
+:::warning[Never done this before?]
+
+Installing mtkclient and making the backup can feel complicated, especially on
+Windows. An AI assistant
+on your computer, such as Claude Code, can
+help you:
+
+- install Python and mtkclient;
+- set them up;
+- make the backup, with the command line or the mtkclient window.
+
+:::

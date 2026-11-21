@@ -10,7 +10,7 @@ type Props = {
 export default function Screenshot({src, caption, width}: Props): ReactNode {
   return (
     <figure className={styles.figure} style={width ? {maxWidth: width} : undefined}>
-      <img className={styles.shot} src={src} alt={caption} />
+      <img className={styles.shot} src={src} alt={caption} loading="lazy" />
       <figcaption className={styles.caption}>{caption}</figcaption>
     </figure>
   );

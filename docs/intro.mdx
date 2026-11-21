@@ -36,12 +36,11 @@ Both:
 - Android reskinned for the e-ink screen, in light and dark mode
 - Animations turned off
 - Partial refresh, so the screen flashes less
-- An Auto mode that switches between fast and quality refresh by itself
-- An always-on display that still lets the phone sleep: **3–4% battery
-  overnight**
-- [Per-app e-ink modes](features/per-app): Text for a reader, Fast for Signal
+- Fast modes with a choice of speed and dither pattern
+- An always-on display that still lets the phone sleep
+- [Per-app e-ink modes](features/eink#per-app-modes): Text for a reader, Fast for Signal
   or WhatsApp
-- [Per-app invert](features/per-app): for apps that only come with a dark
+- [Per-app invert](features/eink#per-app-invert): for apps that only come with a dark
   theme, like Spotify
 
 ## What works
@@ -50,7 +49,7 @@ See [What works](features/what-works) for the full list.
 
 ## Security
 
-Android itself carries security patches from **1 August 2026**. Our kernel and
+Android itself carries security patches from **1 October 2026**. Our kernel and
 vendor image are built from Mudita's source and files, so they keep Mudita's
 patch level.
 
@@ -69,7 +68,8 @@ partition downgrade is needed.
   joining a hidden network
 - You want full control over sounds, vibration and notifications
 - You need apps that require Google Play services: there is a GApps edition
-- Apps you need no longer install on MuditaOS, which is based on Android 12
+- An app you need won't install or run on MuditaOS, because it needs a newer
+  Android than MuditaOS's Android 12
 
 **Not for you if:**
 

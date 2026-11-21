@@ -17,11 +17,11 @@ import Link from '@docusaurus/Link';
 
 ## Back up first
 
-- **Your data:** copy your photos, files and anything else you want to keep to
-  a computer.
-- **The whole phone, once:** make a full backup with
-  [mtkclient](/prepare/mtkclient). If anything ever goes wrong, it puts the
-  phone back as it was.
+- **Your data:** installing erases the phone. Copy your photos, files and
+  anything else you want to keep to a computer.
+- **A full backup with [mtkclient](/prepare/mtkclient):** strongly recommended,
+  not needed. You can always go back to MuditaOS by following
+  [Going back](/install/going-back).
 
 ## Steps
 
@@ -35,7 +35,7 @@ The same file for every phone.
 
 | | Recovery |
 |---|---|
-| All phones | [`KompaktOS-Kernel-LineageOS-Recovery-1.1.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.1/KompaktOS-Kernel-LineageOS-Recovery-1.1.img) |
+| All phones | [`KompaktOS-Kernel-LineageOS-Recovery-1.3.img`](https://github.com/gezimos/KompaktDevice/releases/download/v1.3/KompaktOS-Kernel-LineageOS-Recovery-1.3.img) |
 
 ## Download LineageOS zip
 
@@ -43,8 +43,8 @@ Pick one: your phone's row, with or without Google apps.
 
 | | GApps | Vanilla |
 |---|---|---|
-| Global | [`KompaktOS-1.2-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-Global-GApps.zip) | [`KompaktOS-1.2-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-Global-Vanilla.zip) |
-| North American | [`KompaktOS-1.2-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-USA-GApps.zip) | [`KompaktOS-1.2-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.2/KompaktOS-1.2-USA-Vanilla.zip) |
+| Global | [`KompaktOS-1.3-Global-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.3/KompaktOS-1.3-Global-GApps.zip) | [`KompaktOS-1.3-Global-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.3/KompaktOS-1.3-Global-Vanilla.zip) |
+| North American | [`KompaktOS-1.3-USA-GApps.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.3/KompaktOS-1.3-USA-GApps.zip) | [`KompaktOS-1.3-USA-Vanilla.zip`](https://github.com/gezimos/KompaktOS/releases/download/v1.3/KompaktOS-1.3-USA-Vanilla.zip) |
 
 :::warning[Global or North American? Check before you download]
 
@@ -53,8 +53,8 @@ Pick one: your phone's row, with or without Google apps.
 :::
 
 The md5 of every file is on its release page:
-[KompaktOS 1.2](https://github.com/gezimos/KompaktOS/releases/tag/v1.2) and
-[the recovery](https://github.com/gezimos/KompaktDevice/releases/tag/v1.1).
+[KompaktOS 1.3](https://github.com/gezimos/KompaktOS/releases/tag/v1.3) and
+[the recovery](https://github.com/gezimos/KompaktDevice/releases/tag/v1.3).
 
 ## 1. Flash recovery
 
@@ -65,7 +65,7 @@ You just unlocked the bootloader with [Unlocking](/prepare/unlocking) and the
 phone has not restarted since.
 
 ```
-fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.1.img
+fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.3.img
 fastboot reboot recovery
 ```
 
@@ -76,7 +76,7 @@ The phone is on, with an unlocked bootloader and USB debugging turned on.
 
 ```
 adb reboot bootloader
-fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.1.img
+fastboot flash boot /path/to/KompaktOS-Kernel-LineageOS-Recovery-1.3.img
 fastboot reboot recovery
 ```
 
@@ -121,7 +121,7 @@ If setup later asks for your old PIN or pattern: see
 2. On the computer:
 
    ```
-   adb sideload /path/to/KompaktOS-1.2-Global-GApps.zip
+   adb sideload /path/to/KompaktOS-1.3-Global-GApps.zip
    ```
 
 The computer's counter stops at about 47% and stays there. That is normal: the

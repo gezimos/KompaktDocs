@@ -55,6 +55,7 @@ const config: Config = {
       {
         redirects: [
           {from: ['/install/requirements', '/docs/install/requirements'], to: '/prepare/requirements'},
+          {from: ['/features/per-app', '/docs/features/per-app'], to: '/features/eink'},
         ],
         createRedirects(path: string) {
           if (path === '/') return ['/docs', '/docs/intro'];

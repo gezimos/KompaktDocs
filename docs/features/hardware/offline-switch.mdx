@@ -7,12 +7,8 @@ import Screenshot, {ScreenshotRow} from '@site/src/components/Screenshot';
 
 # The offline switch
 
-The switch on the side cuts the phone signal and the microphone itself, in
-hardware. MuditaOS shows an overlay while it is on; other LineageOS builds
-showed nothing at all.
-
-KompaktOS gives it an indicator: flip the switch and a small panel shows which
-way it now is.
+The switch on the side cuts the phone signal and the microphone in hardware.
+Flip it and a small panel shows which way it now is.
 
 <ScreenshotRow>
   <Screenshot src="/img/screens/offline-indicator-online.png" caption="Switched back online." />
@@ -27,14 +23,18 @@ You also choose what else it switches off. Kompakt app → **Offline**:
 | Microphone | Always cut, by the switch itself |
 | Wi-Fi | Your choice |
 | Bluetooth | Your choice |
-| Camera access | Your choice |
+| Camera access | Your choice, and a real block |
 
-The first two are cut in hardware, so no setting can change them. The rest are
-up to you — cutting Wi-Fi is right if the switch means "offline", wrong if it means
-"not listening".
+- No setting can change the first two.
+- Wi-Fi and Bluetooth are switched off when you flip the switch, not locked:
+  while offline you can turn them back on.
+- Camera access, when you choose it, cuts the camera's power while the switch
+  is on. Nothing on the phone can turn it back on, not even Android's
+  "unblock" prompt.
+- To use the camera again, flip the switch or turn Camera access off in the
+  Offline tab.
 
-Wi-Fi, Bluetooth and camera access are only switched off when you flip the
-switch; they are not locked. While offline you can still turn any of them back
-on yourself, from Quick Settings or Settings, and it stays on.
-
-<Screenshot src="/img/screens/kompakt-offline-tab.png" caption="The Offline tab: what the switch turns off." />
+<ScreenshotRow>
+  <Screenshot src="/img/screens/kompakt-offline-tab.png" caption="The Offline tab: what the switch turns off." />
+  <Screenshot src="/img/screens/kompakt-offline-info.png" caption="The (i) explains what the switch cuts." />
+</ScreenshotRow>
